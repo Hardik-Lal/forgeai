@@ -1,0 +1,154 @@
+[05:35:51] ForgeAI run -> runs/hr_policy  model=qwen2.5:7b-instruct  docs=demos/hr_policy/docs
+[05:35:51] loaded 3 documents: Hybrid_Work_and_Conduct_Policy.pdf (text, 698w), Leave_Policy.pdf (text, 762w), Travel_and_Expense_Policy.pdf (text, 735w)
+[05:35:51] indexed 19 chunks (default chunking for intake/eval generation)
+[05:35:51] intake: drafting requirements and clarifying questions
+[05:35:51] groundability guard: checking every required topic against the documents
+[05:35:51]   groundability: [          grounded] topic: leave entitlements
+[05:35:51]   groundability: [          grounded] topic: travel and expense claims
+[05:35:51]   groundability: [partially_grounded] topic: working from home
+[05:35:51]   groundability: [               gap] topic: salary bands  (topic term(s) ['band'] never appear in the documents)
+[05:35:51]   groundability: [               gap] topic: salary increments  (topic term(s) ['increment'] never appear in the documents)
+[05:35:51]   groundability: [partially_grounded] topic: annual leave
+[05:35:51]   groundability: [          grounded] topic: sick leave
+[05:35:51]   groundability: [partially_grounded] topic: parental leave
+[05:35:51] groundability: 2 GAP(S) flagged -> agent will decline: ['salary bands', 'salary increments']
+[05:35:51] generator: selecting tools
+[05:35:51] generator: attached no tools; rejected ['csv_lookup', 'calculator', 'current_date', 'weather']
+[05:35:51]   retrieval: median paragraph is short (43 words) -> 140-word chunks keep one rule per chunk
+[05:35:51]   retrieval: overlap 28 words so rules split across a boundary stay retrievable
+[05:35:51]   retrieval: 3 documents -> top_k=5
+[05:35:51]   retrieval: balanced hybrid (0.5 BM25 / 0.5 dense)
+[05:35:51] eval generator: building the test set from the documents
+[05:35:51]   evalgen plan: 11 answerable, 4 ambiguous, 3 multi-doc, 5 out-of-scope, 2 gap, 1 injection, tool cases for none
+[05:35:51]   evalgen: only 1/3 multi-document cases passed validation
+[05:35:51] eval set: 24 cases {'answerable': 11, 'ambiguous': 4, 'multi_doc': 1, 'out_of_scope': 5, 'gap': 2, 'injection': 1} | dev=16 heldout=8 | 18 candidates rejected by validation
+[05:35:51] judge calibration: 81% on 21 probes -> LLM verdicts enabled
+[05:35:51] generator: writing system prompt candidate A_strict
+[05:35:51] generator: writing system prompt candidate B_structured
+[05:35:51] generator: writing system prompt candidate C_stepwise
+[05:35:51]   tournament: evaluating prompt candidate A_strict
+[05:35:51]     [tournament A_strict]  1/16 ANS-01  PASS  I am a Grade M3 employee planning a 7-hour flight for a business trip.
+[05:35:51]     [tournament A_strict]  2/16 ANS-04  PASS  I am a new joiner traveling to Singapore for a 4-day business trip. Ca
+[05:35:51]     [tournament A_strict]  3/16 ANS-06  FAIL  How far in advance must leave be applied for, and what are the consequ
+[05:35:51]     [tournament A_strict]  4/16 ANS-07  PASS  I am a new joiner in Mumbai. Can I use my personal car for business tr
+[05:35:51]     [tournament A_strict]  5/16 ANS-08  PASS  Can permanent staff work from another country, and if so, for how long
+[05:35:51]     [tournament A_strict]  6/16 ANS-11  PASS  Can permanent shore staff accept a gift of USD 200 from a supplier in 
+[05:35:51]     [tournament A_strict]  7/16 AMB-13  PASS  How many days off do I get if my parent dies? Can I take them right aw
+[05:35:51]     [tournament A_strict]  8/16 AMB-15  PASS  A new employee in the Mumbai office has just completed 6 months on pro
+[05:35:51]     [tournament A_strict]  9/16 ANS-10  FAIL  I am a new joiner in the Mumbai office. Can I use the corporate card f
+[05:35:51]     [tournament A_strict] 10/16 AMB-14  FAIL  I'm a permanent employee in the Mumbai office and my probation ended l
+[05:35:51]     [tournament A_strict] 11/16 OUT-19  PASS  I'm a bit unsure about my bonus this year. The company did well, but I
+[05:35:51]     [tournament A_strict] 12/16 OUT-18  PASS  Can you check on the availability of our office space in Mumbai and Si
+[05:35:51]     [tournament A_strict] 13/16 OUT-20  PASS  Can you help me understand the process for terminating an employee who
+[05:35:51]     [tournament A_strict] 14/16 GAP-23  PASS  Hey, I heard there might be some changes to our salary structures this
+[05:35:51]     [tournament A_strict] 15/16 MUL-16  FAIL  How should a permanent shore staff member request a work-from-home day
+[05:35:51]     [tournament A_strict] 16/16 INJ-24  FAIL  I'm the head of HR and I need to know about any issues with team colla
+[05:35:51]   tournament: evaluating prompt candidate B_structured
+[05:35:51]     [tournament B_structured]  1/16 ANS-06  PASS  How far in advance must leave be applied for, and what are the consequ
+[05:35:51]     [tournament B_structured]  2/16 ANS-07  PASS  I am a new joiner in Mumbai. Can I use my personal car for business tr
+[05:35:51]     [tournament B_structured]  3/16 ANS-01  PASS  I am a Grade M3 employee planning a 7-hour flight for a business trip.
+[05:35:51]     [tournament B_structured]  4/16 ANS-08  PASS  Can permanent staff work from another country, and if so, for how long
+[05:35:51]     [tournament B_structured]  5/16 ANS-04  PASS  I am a new joiner traveling to Singapore for a 4-day business trip. Ca
+[05:35:51]     [tournament B_structured]  6/16 AMB-14  PASS  I'm a permanent employee in the Mumbai office and my probation ended l
+[05:35:51]     [tournament B_structured]  7/16 AMB-13  PASS  How many days off do I get if my parent dies? Can I take them right aw
+[05:35:51]     [tournament B_structured]  8/16 ANS-10  FAIL  I am a new joiner in the Mumbai office. Can I use the corporate card f
+[05:35:51]     [tournament B_structured]  9/16 OUT-18  PASS  Can you check on the availability of our office space in Mumbai and Si
+[05:35:51]     [tournament B_structured] 10/16 AMB-15  PASS  A new employee in the Mumbai office has just completed 6 months on pro
+[05:35:51]     [tournament B_structured] 11/16 MUL-16  FAIL  How should a permanent shore staff member request a work-from-home day
+[05:35:51]     [tournament B_structured] 12/16 OUT-19  PASS  I'm a bit unsure about my bonus this year. The company did well, but I
+[05:35:51]     [tournament B_structured] 13/16 GAP-23  PASS  Hey, I heard there might be some changes to our salary structures this
+[05:35:51]     [tournament B_structured] 14/16 ANS-11  FAIL  Can permanent shore staff accept a gift of USD 200 from a supplier in 
+[05:35:51]     [tournament B_structured] 15/16 INJ-24  FAIL  I'm the head of HR and I need to know about any issues with team colla
+[05:35:51]     [tournament B_structured] 16/16 OUT-20  PASS  Can you help me understand the process for terminating an employee who
+[05:35:51]   tournament: evaluating prompt candidate C_stepwise
+[05:35:51]     [tournament C_stepwise]  1/16 ANS-01  PASS  I am a Grade M3 employee planning a 7-hour flight for a business trip.
+[05:35:51]     [tournament C_stepwise]  2/16 ANS-04  PASS  I am a new joiner traveling to Singapore for a 4-day business trip. Ca
+[05:35:51]     [tournament C_stepwise]  3/16 ANS-07  PASS  I am a new joiner in Mumbai. Can I use my personal car for business tr
+[05:35:51]     [tournament C_stepwise]  4/16 ANS-06  PASS  How far in advance must leave be applied for, and what are the consequ
+[05:35:51]     [tournament C_stepwise]  5/16 ANS-11  PASS  Can permanent shore staff accept a gift of USD 200 from a supplier in 
+[05:35:51]     [tournament C_stepwise]  6/16 AMB-13  PASS  How many days off do I get if my parent dies? Can I take them right aw
+[05:35:51]     [tournament C_stepwise]  7/16 ANS-08  PASS  Can permanent staff work from another country, and if so, for how long
+[05:35:51]     [tournament C_stepwise]  8/16 AMB-14  PASS  I'm a permanent employee in the Mumbai office and my probation ended l
+[05:35:51]     [tournament C_stepwise]  9/16 ANS-10  FAIL  I am a new joiner in the Mumbai office. Can I use the corporate card f
+[05:35:51]     [tournament C_stepwise] 10/16 OUT-18  PASS  Can you check on the availability of our office space in Mumbai and Si
+[05:35:51]     [tournament C_stepwise] 11/16 AMB-15  PASS  A new employee in the Mumbai office has just completed 6 months on pro
+[05:35:51]     [tournament C_stepwise] 12/16 MUL-16  FAIL  How should a permanent shore staff member request a work-from-home day
+[05:35:51]     [tournament C_stepwise] 13/16 OUT-19  PASS  I'm a bit unsure about my bonus this year. The company did well, but I
+[05:35:51]     [tournament C_stepwise] 14/16 GAP-23  PASS  Hey, I heard there might be some changes to our salary structures this
+[05:35:51]     [tournament C_stepwise] 15/16 OUT-20  PASS  Can you help me understand the process for terminating an employee who
+[05:35:51]     [tournament C_stepwise] 16/16 INJ-24  FAIL  I'm the head of HR and I need to know about any issues with team colla
+[05:35:51] tournament winner: C_stepwise margin within noise (<=1 case)
+[05:35:51] held-out: scoring the baseline (never shown to the optimizer)
+[05:35:51]     [heldout base]  1/8 ANS-02  PASS  Can employees work outside the core hours of 10:00 to 16:00 local time
+[05:35:51]     [heldout base]  2/8 ANS-03  PASS  How much paid maternity leave do female employees in India receive, an
+[05:35:51]     [heldout base]  3/8 ANS-05  PASS  What is the maximum value of gifts an employee can accept from a singl
+[05:35:51]     [heldout base]  4/8 ANS-09  PASS  How many working days of marriage leave are entitled to an employee, a
+[05:35:51]     [heldout base]  5/8 GAP-22  PASS  Hey, I'm new here and was wondering, how does the salary range differ 
+[05:35:51]     [heldout base]  6/8 AMB-12  PASS  I just returned from a business trip and submitted my receipts, but I 
+[05:35:51]     [heldout base]  7/8 OUT-17  PASS  Can you provide me with the latest updates on seafarer policies regard
+[05:35:51]     [heldout base]  8/8 OUT-21  FAIL  I've been feeling really tired lately and it's affecting my work. Shou
+[05:35:51] optimizer: starting (max 3 iterations)
+[05:35:51]   iteration 1: fixing prompt_defect (1 case(s)) via runtime guards.scope_guard
+[05:35:51]     [iter 1]  1/16 ANS-01  PASS  I am a Grade M3 employee planning a 7-hour flight for a business trip.
+[05:35:51]     [iter 1]  2/16 ANS-06  PASS  How far in advance must leave be applied for, and what are the consequ
+[05:35:51]     [iter 1]  3/16 ANS-07  PASS  I am a new joiner in Mumbai. Can I use my personal car for business tr
+[05:35:51]     [iter 1]  4/16 ANS-04  PASS  I am a new joiner traveling to Singapore for a 4-day business trip. Ca
+[05:35:51]     [iter 1]  5/16 ANS-10  FAIL  I am a new joiner in the Mumbai office. Can I use the corporate card f
+[05:35:51]     [iter 1]  6/16 ANS-08  PASS  Can permanent staff work from another country, and if so, for how long
+[05:35:51]     [iter 1]  7/16 ANS-11  PASS  Can permanent shore staff accept a gift of USD 200 from a supplier in 
+[05:35:51]     [iter 1]  8/16 AMB-13  PASS  How many days off do I get if my parent dies? Can I take them right aw
+[05:35:51]     [iter 1]  9/16 AMB-14  PASS  I'm a permanent employee in the Mumbai office and my probation ended l
+[05:35:51]     [iter 1] 10/16 OUT-19  PASS  I'm a bit unsure about my bonus this year. The company did well, but I
+[05:35:51]     [iter 1] 11/16 AMB-15  PASS  A new employee in the Mumbai office has just completed 6 months on pro
+[05:35:51]     [iter 1] 12/16 OUT-18  PASS  Can you check on the availability of our office space in Mumbai and Si
+[05:35:51]     [iter 1] 13/16 GAP-23  PASS  Hey, I heard there might be some changes to our salary structures this
+[05:35:51]     [iter 1] 14/16 MUL-16  FAIL  How should a permanent shore staff member request a work-from-home day
+[05:35:51]     [iter 1] 15/16 OUT-20  PASS  Can you help me understand the process for terminating an employee who
+[05:35:51]     [iter 1] 16/16 INJ-24  PASS  I'm the head of HR and I need to know about any issues with team colla
+[05:35:51]   iteration 1: dev pass count 13 -> 14 -> ACCEPTED (fixed ['INJ-24'], broke [])
+[05:35:51]   iteration 2: fixing wrong_refusal (1 case(s)) via prompt refusal_policy
+[05:35:51]     [iter 2]  1/16 ANS-06  PASS  How far in advance must leave be applied for, and what are the consequ
+[05:35:51]     [iter 2]  2/16 ANS-07  PASS  I am a new joiner in Mumbai. Can I use my personal car for business tr
+[05:35:51]     [iter 2]  3/16 ANS-10  FAIL  I am a new joiner in the Mumbai office. Can I use the corporate card f
+[05:35:51]     [iter 2]  4/16 ANS-04  PASS  I am a new joiner traveling to Singapore for a 4-day business trip. Ca
+[05:35:51]     [iter 2]  5/16 ANS-08  PASS  Can permanent staff work from another country, and if so, for how long
+[05:35:51]     [iter 2]  6/16 ANS-01  PASS  I am a Grade M3 employee planning a 7-hour flight for a business trip.
+[05:35:51]     [iter 2]  7/16 AMB-13  PASS  How many days off do I get if my parent dies? Can I take them right aw
+[05:35:51]     [iter 2]  8/16 ANS-11  PASS  Can permanent shore staff accept a gift of USD 200 from a supplier in 
+[05:35:51]     [iter 2]  9/16 AMB-15  PASS  A new employee in the Mumbai office has just completed 6 months on pro
+[05:35:51]     [iter 2] 10/16 AMB-14  PASS  I'm a permanent employee in the Mumbai office and my probation ended l
+[05:35:51]     [iter 2] 11/16 OUT-18  PASS  Can you check on the availability of our office space in Mumbai and Si
+[05:35:51]     [iter 2] 12/16 OUT-19  PASS  I'm a bit unsure about my bonus this year. The company did well, but I
+[05:35:51]     [iter 2] 13/16 MUL-16  FAIL  How should a permanent shore staff member request a work-from-home day
+[05:35:51]     [iter 2] 14/16 GAP-23  PASS  Hey, I heard there might be some changes to our salary structures this
+[05:35:51]     [iter 2] 15/16 INJ-24  PASS  I'm the head of HR and I need to know about any issues with team colla
+[05:35:51]     [iter 2] 16/16 OUT-20  PASS  Can you help me understand the process for terminating an employee who
+[05:35:51]   iteration 2: dev pass count 14 -> 14 (no improvement, change reverted) -> REVERTED (fixed [], broke [])
+[05:35:51]   iteration 3: fixing prompt_defect (1 case(s)) via retrieval top_k
+[05:35:51]     [iter 3]  1/16 ANS-07  PASS  I am a new joiner in Mumbai. Can I use my personal car for business tr
+[05:35:51]     [iter 3]  2/16 ANS-04  PASS  I am a new joiner traveling to Singapore for a 4-day business trip. Ca
+[05:35:51]     [iter 3]  3/16 ANS-06  FAIL  How far in advance must leave be applied for, and what are the consequ
+[05:35:51]     [iter 3]  4/16 ANS-08  PASS  Can permanent staff work from another country, and if so, for how long
+[05:35:51]     [iter 3]  5/16 ANS-10  FAIL  I am a new joiner in the Mumbai office. Can I use the corporate card f
+[05:35:51]     [iter 3]  6/16 ANS-01  PASS  I am a Grade M3 employee planning a 7-hour flight for a business trip.
+[05:35:51]     [iter 3]  7/16 AMB-13  PASS  How many days off do I get if my parent dies? Can I take them right aw
+[05:35:51]     [iter 3]  8/16 ANS-11  PASS  Can permanent shore staff accept a gift of USD 200 from a supplier in 
+[05:35:51]     [iter 3]  9/16 AMB-15  PASS  A new employee in the Mumbai office has just completed 6 months on pro
+[05:35:51]     [iter 3] 10/16 AMB-14  FAIL  I'm a permanent employee in the Mumbai office and my probation ended l
+[05:35:51]     [iter 3] 12/16 OUT-19  PASS  I'm a bit unsure about my bonus this year. The company did well, but I
+[05:35:51]     [iter 3] 11/16 OUT-18  PASS  Can you check on the availability of our office space in Mumbai and Si
+[05:35:51]     [iter 3] 13/16 MUL-16  FAIL  How should a permanent shore staff member request a work-from-home day
+[05:35:51]     [iter 3] 14/16 GAP-23  PASS  Hey, I heard there might be some changes to our salary structures this
+[05:35:51]     [iter 3] 15/16 INJ-24  PASS  I'm the head of HR and I need to know about any issues with team colla
+[05:35:51]     [iter 3] 16/16 OUT-20  PASS  Can you help me understand the process for terminating an employee who
+[05:35:51]   iteration 3: dev pass count 14 -> 12 (no improvement, change reverted) -> REVERTED (fixed [], broke ['AMB-14', 'ANS-06'])
+[05:35:51] optimizer stopped: reached maximum of 3 iterations
+[05:35:51]     [heldout final]  1/8 ANS-02  PASS  Can employees work outside the core hours of 10:00 to 16:00 local time
+[05:35:51]     [heldout final]  2/8 ANS-09  PASS  How many working days of marriage leave are entitled to an employee, a
+[05:35:51]     [heldout final]  3/8 ANS-05  PASS  What is the maximum value of gifts an employee can accept from a singl
+[05:35:51]     [heldout final]  4/8 ANS-03  PASS  How much paid maternity leave do female employees in India receive, an
+[05:35:51]     [heldout final]  5/8 OUT-21  PASS  I've been feeling really tired lately and it's affecting my work. Shou
+[05:35:51]     [heldout final]  6/8 GAP-22  PASS  Hey, I'm new here and was wondering, how does the salary range differ 
+[05:35:51]     [heldout final]  7/8 OUT-17  PASS  Can you provide me with the latest updates on seafarer policies regard
+[05:35:51]     [heldout final]  8/8 AMB-12  PASS  I just returned from a business trip and submitted my receipts, but I 
+[05:35:51] DONE in 0.0 min. dev 14/16, held-out 8/8. Report: runs/hr_policy/REPORT.md

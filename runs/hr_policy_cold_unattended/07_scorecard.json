@@ -1,0 +1,295 @@
+{
+  "agent": "BluefinHRAssistant",
+  "model": "qwen2.5:7b-instruct",
+  "baseline": {
+    "dev": {
+      "n": 16,
+      "passed": 11,
+      "pass_rate": 0.688,
+      "ci95": [
+        0.444,
+        0.858
+      ],
+      "by_type": {
+        "ambiguous": "3/3",
+        "answerable": "4/7",
+        "gap": "1/1",
+        "injection": "1/1",
+        "multi_doc": "0/1",
+        "out_of_scope": "2/3"
+      },
+      "check_pass_rates": {
+        "behavior": 0.938,
+        "contract": 1.0,
+        "facts": 0.727,
+        "grounded": 0.938,
+        "sources": 1.0,
+        "tools": 1.0
+      },
+      "mean_fact_recall": 0.833,
+      "refusal_precision": {
+        "correct_refusals": 4,
+        "wrong_refusals": 0,
+        "missed_refusals": 1
+      },
+      "mean_latency_s": 44.16,
+      "tokens": 43784,
+      "seconds": 223.1
+    },
+    "heldout": {
+      "n": 8,
+      "passed": 6,
+      "pass_rate": 0.75,
+      "ci95": [
+        0.409,
+        0.929
+      ],
+      "by_type": {
+        "ambiguous": "1/1",
+        "answerable": "3/4",
+        "gap": "1/1",
+        "out_of_scope": "1/2"
+      },
+      "check_pass_rates": {
+        "behavior": 0.875,
+        "contract": 1.0,
+        "facts": 1.0,
+        "grounded": 0.875,
+        "sources": 1.0,
+        "tools": 1.0
+      },
+      "mean_fact_recall": 0.933,
+      "refusal_precision": {
+        "correct_refusals": 2,
+        "wrong_refusals": 0,
+        "missed_refusals": 1
+      },
+      "mean_latency_s": 43.35,
+      "tokens": 22196,
+      "seconds": 135.8
+    }
+  },
+  "final": {
+    "dev": {
+      "n": 16,
+      "passed": 11,
+      "pass_rate": 0.688,
+      "ci95": [
+        0.444,
+        0.858
+      ],
+      "by_type": {
+        "ambiguous": "3/3",
+        "answerable": "4/7",
+        "gap": "1/1",
+        "injection": "1/1",
+        "multi_doc": "0/1",
+        "out_of_scope": "2/3"
+      },
+      "check_pass_rates": {
+        "behavior": 0.938,
+        "contract": 1.0,
+        "facts": 0.727,
+        "grounded": 0.938,
+        "sources": 1.0,
+        "tools": 1.0
+      },
+      "mean_fact_recall": 0.833,
+      "refusal_precision": {
+        "correct_refusals": 4,
+        "wrong_refusals": 0,
+        "missed_refusals": 1
+      },
+      "mean_latency_s": 44.16,
+      "tokens": 43784,
+      "seconds": 223.1
+    },
+    "heldout": {
+      "n": 8,
+      "passed": 6,
+      "pass_rate": 0.75,
+      "ci95": [
+        0.409,
+        0.929
+      ],
+      "by_type": {
+        "ambiguous": "1/1",
+        "answerable": "3/4",
+        "gap": "1/1",
+        "out_of_scope": "1/2"
+      },
+      "check_pass_rates": {
+        "behavior": 0.875,
+        "contract": 1.0,
+        "facts": 1.0,
+        "grounded": 0.875,
+        "sources": 1.0,
+        "tools": 1.0
+      },
+      "mean_fact_recall": 0.933,
+      "refusal_precision": {
+        "correct_refusals": 2,
+        "wrong_refusals": 0,
+        "missed_refusals": 1
+      },
+      "mean_latency_s": 43.35,
+      "tokens": 22196,
+      "seconds": 135.8
+    },
+    "overall": {
+      "n": 24,
+      "passed": 17,
+      "pass_rate": 0.708,
+      "ci95": [
+        0.508,
+        0.851
+      ],
+      "by_type": {
+        "ambiguous": "4/4",
+        "answerable": "7/11",
+        "gap": "2/2",
+        "injection": "1/1",
+        "multi_doc": "0/1",
+        "out_of_scope": "3/5"
+      },
+      "check_pass_rates": {
+        "behavior": 0.917,
+        "contract": 1.0,
+        "facts": 0.812,
+        "grounded": 0.917,
+        "sources": 1.0,
+        "tools": 1.0
+      },
+      "mean_fact_recall": 0.865,
+      "refusal_precision": {
+        "correct_refusals": 6,
+        "wrong_refusals": 0,
+        "missed_refusals": 2
+      },
+      "mean_latency_s": 43.89
+    }
+  },
+  "iterations": [
+    {
+      "iteration": 0,
+      "action": "baseline (tournament winner)",
+      "category": null,
+      "decision": "baseline",
+      "dev_passed": 11,
+      "dev_n": 16,
+      "dev_pass_rate": 0.688,
+      "fixed": [],
+      "broken": []
+    },
+    {
+      "iteration": 1,
+      "action": "runtime: guards.scope_guard",
+      "category": "prompt_defect",
+      "decision": "reverted",
+      "dev_passed": 11,
+      "dev_n": 16,
+      "dev_pass_rate": 0.688,
+      "fixed": [
+        "OUT-18"
+      ],
+      "broken": [
+        "AMB-14"
+      ]
+    },
+    {
+      "iteration": 2,
+      "action": "prompt: refusal_policy",
+      "category": "prompt_defect",
+      "decision": "reverted",
+      "dev_passed": 9,
+      "dev_n": 16,
+      "dev_pass_rate": 0.562,
+      "fixed": [],
+      "broken": [
+        "ANS-11",
+        "OUT-19"
+      ]
+    }
+  ],
+  "stop_reason": "early stop: the last two fixes did not pay for themselves (no dev improvement)",
+  "judge_calibration": {
+    "n_probes": 20,
+    "accuracy": 0.8,
+    "trusted": true,
+    "by_probe_type": {
+      "positive": "2/6",
+      "unrelated-answer": "6/6",
+      "verbose-wrong": "6/6",
+      "perturbed-number": "2/2"
+    },
+    "judge_model": "qwen2.5:7b-instruct",
+    "note": "LLM verdicts enabled"
+  },
+  "judge_overrules": 44,
+  "budget": {
+    "tokens_in": 253989,
+    "tokens_out": 16200,
+    "tokens_total": 270189,
+    "calls": 383,
+    "cache_hits": 49,
+    "llm_seconds": 5275.8,
+    "cached_tokens": 53177,
+    "cached_llm_seconds": 1015.4,
+    "wall_seconds": 2088.1,
+    "max_tokens": 3000000,
+    "max_seconds": 10800,
+    "by_stage": {
+      "embed": {
+        "calls": 47,
+        "tokens": 9291,
+        "seconds": 2.45
+      },
+      "intake": {
+        "calls": 2,
+        "tokens": 3273,
+        "seconds": 69.09
+      },
+      "groundability": {
+        "calls": 9,
+        "tokens": 18389,
+        "seconds": 267.64
+      },
+      "generator.tools": {
+        "calls": 1,
+        "tokens": 935,
+        "seconds": 26.35
+      },
+      "evalgen": {
+        "calls": 106,
+        "tokens": 35728,
+        "seconds": 497.38
+      },
+      "judge": {
+        "calls": 77,
+        "tokens": 60492,
+        "seconds": 857.12
+      },
+      "generator.prompt": {
+        "calls": 3,
+        "tokens": 5232,
+        "seconds": 66.73
+      },
+      "agent.answer": {
+        "calls": 72,
+        "tokens": 131326,
+        "seconds": 3403.72
+      },
+      "agent.guard": {
+        "calls": 16,
+        "tokens": 4709,
+        "seconds": 72.04
+      },
+      "optimizer": {
+        "calls": 1,
+        "tokens": 814,
+        "seconds": 13.23
+      }
+    }
+  },
+  "wall_minutes": 34.8
+}

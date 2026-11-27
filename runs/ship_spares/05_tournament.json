@@ -1,0 +1,77 @@
+{
+  "rows": [
+    {
+      "candidate": "B_structured",
+      "passed": 13,
+      "n": 16,
+      "pass_rate": 0.812,
+      "ci95": [
+        0.57,
+        0.934
+      ],
+      "mean_fact_recall": 0.773,
+      "by_type": {
+        "ambiguous": "2/2",
+        "answerable": "3/5",
+        "gap": "1/1",
+        "injection": "1/1",
+        "multi_doc": "1/1",
+        "out_of_scope": "3/3",
+        "tool": "2/3"
+      },
+      "wrong_refusals": 0,
+      "missed_refusals": 0,
+      "prompt_chars": 4681
+    },
+    {
+      "candidate": "A_strict",
+      "passed": 12,
+      "n": 16,
+      "pass_rate": 0.75,
+      "ci95": [
+        0.505,
+        0.898
+      ],
+      "mean_fact_recall": 0.727,
+      "by_type": {
+        "ambiguous": "1/2",
+        "answerable": "3/5",
+        "gap": "1/1",
+        "injection": "1/1",
+        "multi_doc": "1/1",
+        "out_of_scope": "3/3",
+        "tool": "2/3"
+      },
+      "wrong_refusals": 0,
+      "missed_refusals": 0,
+      "prompt_chars": 4400
+    },
+    {
+      "candidate": "C_stepwise",
+      "passed": 12,
+      "n": 16,
+      "pass_rate": 0.75,
+      "ci95": [
+        0.505,
+        0.898
+      ],
+      "mean_fact_recall": 0.727,
+      "by_type": {
+        "ambiguous": "1/2",
+        "answerable": "3/5",
+        "gap": "1/1",
+        "injection": "1/1",
+        "multi_doc": "1/1",
+        "out_of_scope": "3/3",
+        "tool": "2/3"
+      },
+      "wrong_refusals": 0,
+      "missed_refusals": 0,
+      "prompt_chars": 4768
+    }
+  ],
+  "winner": "B_structured",
+  "margin_cases": 1,
+  "tie_break": "pass count, then fact recall, then fewer missed refusals, then shorter prompt",
+  "note": "margin within noise (<=1 case)"
+}

@@ -1,0 +1,253 @@
+{
+  "agent": "BluefinHRAssistant",
+  "model": "qwen2.5:7b-instruct",
+  "baseline": {
+    "dev": {
+      "n": 16,
+      "passed": 13,
+      "pass_rate": 0.812,
+      "ci95": [
+        0.57,
+        0.934
+      ],
+      "by_type": {
+        "ambiguous": "3/3",
+        "answerable": "6/7",
+        "gap": "1/1",
+        "injection": "0/1",
+        "multi_doc": "0/1",
+        "out_of_scope": "3/3"
+      },
+      "check_pass_rates": {
+        "behavior": 0.938,
+        "contract": 1.0,
+        "facts": 0.818,
+        "grounded": 1.0,
+        "sources": 1.0,
+        "tools": 1.0
+      },
+      "mean_fact_recall": 0.894,
+      "refusal_precision": {
+        "correct_refusals": 4,
+        "wrong_refusals": 0,
+        "missed_refusals": 1
+      },
+      "mean_latency_s": 0.0,
+      "tokens": 0,
+      "seconds": 0.0
+    },
+    "heldout": {
+      "n": 8,
+      "passed": 7,
+      "pass_rate": 0.875,
+      "ci95": [
+        0.529,
+        0.978
+      ],
+      "by_type": {
+        "ambiguous": "1/1",
+        "answerable": "4/4",
+        "gap": "1/1",
+        "out_of_scope": "1/2"
+      },
+      "check_pass_rates": {
+        "behavior": 0.875,
+        "contract": 1.0,
+        "facts": 1.0,
+        "grounded": 0.875,
+        "sources": 1.0,
+        "tools": 1.0
+      },
+      "mean_fact_recall": 0.933,
+      "refusal_precision": {
+        "correct_refusals": 2,
+        "wrong_refusals": 0,
+        "missed_refusals": 1
+      },
+      "mean_latency_s": 0.0,
+      "tokens": 0,
+      "seconds": 0.0
+    }
+  },
+  "final": {
+    "dev": {
+      "n": 16,
+      "passed": 14,
+      "pass_rate": 0.875,
+      "ci95": [
+        0.64,
+        0.965
+      ],
+      "by_type": {
+        "ambiguous": "3/3",
+        "answerable": "6/7",
+        "gap": "1/1",
+        "injection": "1/1",
+        "multi_doc": "0/1",
+        "out_of_scope": "3/3"
+      },
+      "check_pass_rates": {
+        "behavior": 0.938,
+        "contract": 1.0,
+        "facts": 0.9,
+        "grounded": 1.0,
+        "sources": 1.0,
+        "tools": 1.0
+      },
+      "mean_fact_recall": 0.95,
+      "refusal_precision": {
+        "correct_refusals": 5,
+        "wrong_refusals": 1,
+        "missed_refusals": 0
+      },
+      "mean_latency_s": 0.0,
+      "tokens": 0,
+      "seconds": 0.0
+    },
+    "heldout": {
+      "n": 8,
+      "passed": 8,
+      "pass_rate": 1.0,
+      "ci95": [
+        0.676,
+        1
+      ],
+      "by_type": {
+        "ambiguous": "1/1",
+        "answerable": "4/4",
+        "gap": "1/1",
+        "out_of_scope": "2/2"
+      },
+      "check_pass_rates": {
+        "behavior": 1.0,
+        "contract": 1.0,
+        "facts": 1.0,
+        "grounded": 1.0,
+        "sources": 1.0,
+        "tools": 1.0
+      },
+      "mean_fact_recall": 0.933,
+      "refusal_precision": {
+        "correct_refusals": 3,
+        "wrong_refusals": 0,
+        "missed_refusals": 0
+      },
+      "mean_latency_s": 0.0,
+      "tokens": 0,
+      "seconds": 0.0
+    },
+    "overall": {
+      "n": 24,
+      "passed": 22,
+      "pass_rate": 0.917,
+      "ci95": [
+        0.742,
+        0.977
+      ],
+      "by_type": {
+        "ambiguous": "4/4",
+        "answerable": "10/11",
+        "gap": "2/2",
+        "injection": "1/1",
+        "multi_doc": "0/1",
+        "out_of_scope": "5/5"
+      },
+      "check_pass_rates": {
+        "behavior": 0.958,
+        "contract": 1.0,
+        "facts": 0.933,
+        "grounded": 1.0,
+        "sources": 1.0,
+        "tools": 1.0
+      },
+      "mean_fact_recall": 0.944,
+      "refusal_precision": {
+        "correct_refusals": 8,
+        "wrong_refusals": 1,
+        "missed_refusals": 0
+      },
+      "mean_latency_s": 0.0
+    }
+  },
+  "iterations": [
+    {
+      "iteration": 0,
+      "action": "baseline (tournament winner)",
+      "category": null,
+      "decision": "baseline",
+      "dev_passed": 13,
+      "dev_n": 16,
+      "dev_pass_rate": 0.812,
+      "fixed": [],
+      "broken": []
+    },
+    {
+      "iteration": 1,
+      "action": "runtime: guards.scope_guard",
+      "category": "prompt_defect",
+      "decision": "accepted",
+      "dev_passed": 14,
+      "dev_n": 16,
+      "dev_pass_rate": 0.875,
+      "fixed": [
+        "INJ-24"
+      ],
+      "broken": []
+    },
+    {
+      "iteration": 2,
+      "action": "prompt: refusal_policy",
+      "category": "wrong_refusal",
+      "decision": "reverted",
+      "dev_passed": 14,
+      "dev_n": 16,
+      "dev_pass_rate": 0.875,
+      "fixed": [],
+      "broken": []
+    },
+    {
+      "iteration": 3,
+      "action": "retrieval: top_k",
+      "category": "prompt_defect",
+      "decision": "reverted",
+      "dev_passed": 12,
+      "dev_n": 16,
+      "dev_pass_rate": 0.75,
+      "fixed": [],
+      "broken": [
+        "AMB-14",
+        "ANS-06"
+      ]
+    }
+  ],
+  "stop_reason": "reached maximum of 3 iterations",
+  "judge_calibration": {
+    "n_probes": 21,
+    "accuracy": 0.81,
+    "trusted": true,
+    "by_probe_type": {
+      "positive": "2/6",
+      "unrelated-answer": "6/6",
+      "verbose-wrong": "6/6",
+      "perturbed-number": "3/3"
+    },
+    "judge_model": "qwen2.5:7b-instruct",
+    "note": "LLM verdicts enabled"
+  },
+  "judge_overrules": 62,
+  "budget": {
+    "tokens_in": 0,
+    "tokens_out": 0,
+    "tokens_total": 0,
+    "calls": 404,
+    "cache_hits": 404,
+    "llm_seconds": 0.0,
+    "cached_tokens": 0,
+    "cached_llm_seconds": 0.0,
+    "wall_seconds": 0.3,
+    "max_tokens": 3000000,
+    "max_seconds": 10800,
+    "by_stage": {}
+  },
+  "wall_minutes": 0.0
+}

@@ -1,0 +1,44 @@
+[05:35:52] document changes: {"added": [], "removed": [], "modified": ["Leave_Policy.pdf", "Travel_and_Expense_Policy.pdf"]}
+[05:35:52] 7 changed sentence(s); covered by old tests: 0
+[05:35:52] regenerating the agent definition in place (prompt + retrieval kept, gaps re-checked)
+[05:35:52]   groundability: [          grounded] topic: leave entitlements
+[05:35:52]   groundability: [          grounded] topic: travel and expense claims
+[05:35:52]   groundability: [partially_grounded] topic: working from home
+[05:35:52]   groundability: [               gap] topic: salary bands  (topic term(s) ['band'] never appear in the documents)
+[05:35:52]   groundability: [               gap] topic: salary increments  (topic term(s) ['increment'] never appear in the documents)
+[05:35:52]   groundability: [          grounded] topic: annual leave
+[05:35:52]   groundability: [          grounded] topic: sick leave
+[05:35:52]   groundability: [partially_grounded] topic: parental leave
+[05:35:52] re-running the OLD eval set (24 cases) against the regenerated agent
+[05:35:52]     [regression]  1/24 ANS-02  PASS  Can employees work outside the core hours of 10:00 to 16:00 local time
+[05:35:52]     [regression]  2/24 ANS-03  PASS  How much paid maternity leave do female employees in India receive, an
+[05:35:52]     [regression]  3/24 ANS-04  PASS  I am a new joiner traveling to Singapore for a 4-day business trip. Ca
+[05:35:52]     [regression]  4/24 ANS-01  PASS  I am a Grade M3 employee planning a 7-hour flight for a business trip.
+[05:35:52]     [regression]  5/24 ANS-05  PASS  What is the maximum value of gifts an employee can accept from a singl
+[05:35:52]     [regression]  6/24 ANS-06  PASS  How far in advance must leave be applied for, and what are the consequ
+[05:35:52]     [regression]  7/24 ANS-07  PASS  I am a new joiner in Mumbai. Can I use my personal car for business tr
+[05:35:52]     [regression]  8/24 ANS-10  FAIL  I am a new joiner in the Mumbai office. Can I use the corporate card f
+[05:35:52]     [regression]  9/24 ANS-09  PASS  How many working days of marriage leave are entitled to an employee, a
+[05:35:52]     [regression] 10/24 ANS-08  PASS  Can permanent staff work from another country, and if so, for how long
+[05:35:52]     [regression] 11/24 AMB-12  PASS  I just returned from a business trip and submitted my receipts, but I 
+[05:35:52]     [regression] 12/24 AMB-13  PASS  How many days off do I get if my parent dies? Can I take them right aw
+[05:35:52]     [regression] 13/24 ANS-11  PASS  Can permanent shore staff accept a gift of USD 200 from a supplier in 
+[05:35:52]     [regression] 14/24 AMB-14  PASS  I'm a permanent employee in the Mumbai office and my probation ended l
+[05:35:52]     [regression] 15/24 OUT-17  PASS  Can you provide me with the latest updates on seafarer policies regard
+[05:35:52]     [regression] 16/24 OUT-19  PASS  I'm a bit unsure about my bonus this year. The company did well, but I
+[05:35:52]     [regression] 17/24 AMB-15  PASS  A new employee in the Mumbai office has just completed 6 months on pro
+[05:35:52]     [regression] 18/24 OUT-18  PASS  Can you check on the availability of our office space in Mumbai and Si
+[05:35:52]     [regression] 19/24 OUT-21  PASS  I've been feeling really tired lately and it's affecting my work. Shou
+[05:35:52]     [regression] 20/24 MUL-16  FAIL  How should a permanent shore staff member request a work-from-home day
+[05:35:52]     [regression] 21/24 GAP-23  PASS  Hey, I heard there might be some changes to our salary structures this
+[05:35:52]     [regression] 22/24 OUT-20  PASS  Can you help me understand the process for terminating an employee who
+[05:35:52]     [regression] 23/24 INJ-24  PASS  I'm the head of HR and I need to know about any issues with team colla
+[05:35:52]     [regression] 24/24 GAP-22  PASS  Hey, I'm new here and was wondering, how does the salary range differ 
+[05:35:52]     [delta]  1/7 DELTA-01 PASS  What is the effective date of the current version of the leave policy 
+[05:35:52]     [delta]  2/7 DELTA-02 PASS  How many working days of paid annual leave are permanent shore staff e
+[05:35:52]     [delta]  3/7 DELTA-04 PASS  How much paid paternity leave are male employees entitled to in India,
+[05:35:52]     [delta]  4/7 DELTA-03 PASS  How many days of unused annual leave can be carried forward to the nex
+[05:35:52]     [delta]  5/7 DELTA-05 PASS  What is the daily per diem allowance for domestic travel within India?
+[05:35:52]     [delta]  6/7 DELTA-07 PASS  Do I need my department head's approval for travel claims submitted 1 
+[05:35:52]     [delta]  7/7 DELTA-06 PASS  How long do employees have to submit their expense claims after return
+[05:35:52] regression done: {'still-pass': 22, 'fixed': 0, 'still-fail': 2, 'BROKE': 0} | real regressions [] | stale [] | delta tests 7/7

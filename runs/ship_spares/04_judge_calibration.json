@@ -1,0 +1,183 @@
+{
+  "n_probes": 24,
+  "accuracy": 0.833,
+  "trusted": true,
+  "by_probe_type": {
+    "positive": "2/6",
+    "unrelated-answer": "6/6",
+    "perturbed-number": "6/6",
+    "verbose-wrong": "6/6"
+  },
+  "judge_model": "qwen2.5:7b-instruct",
+  "note": "LLM verdicts enabled",
+  "probes": [
+    {
+      "probe": "positive",
+      "fact": "12% surcharge of the order value",
+      "expected": true,
+      "got": false,
+      "correct": false
+    },
+    {
+      "probe": "unrelated-answer",
+      "fact": "12% surcharge of the order value",
+      "expected": false,
+      "got": false,
+      "correct": true
+    },
+    {
+      "probe": "perturbed-number",
+      "fact": "12% surcharge of the order value",
+      "expected": false,
+      "got": false,
+      "correct": true
+    },
+    {
+      "probe": "verbose-wrong",
+      "fact": "12% surcharge of the order value",
+      "expected": false,
+      "got": false,
+      "correct": true
+    },
+    {
+      "probe": "positive",
+      "fact": "USD 10,000",
+      "expected": true,
+      "got": false,
+      "correct": false
+    },
+    {
+      "probe": "unrelated-answer",
+      "fact": "USD 10,000",
+      "expected": false,
+      "got": false,
+      "correct": true
+    },
+    {
+      "probe": "perturbed-number",
+      "fact": "USD 10,000",
+      "expected": false,
+      "got": false,
+      "correct": true
+    },
+    {
+      "probe": "verbose-wrong",
+      "fact": "USD 10,000",
+      "expected": false,
+      "got": false,
+      "correct": true
+    },
+    {
+      "probe": "positive",
+      "fact": "Returns of unused standard items are accepted within 21 days of delivery",
+      "expected": true,
+      "got": true,
+      "correct": true
+    },
+    {
+      "probe": "unrelated-answer",
+      "fact": "Returns of unused standard items are accepted within 21 days of delivery",
+      "expected": false,
+      "got": false,
+      "correct": true
+    },
+    {
+      "probe": "perturbed-number",
+      "fact": "Returns of unused standard items are accepted within 21 days of delivery",
+      "expected": false,
+      "got": false,
+      "correct": true
+    },
+    {
+      "probe": "verbose-wrong",
+      "fact": "Returns of unused standard items are accepted within 21 days of delivery",
+      "expected": false,
+      "got": false,
+      "correct": true
+    },
+    {
+      "probe": "positive",
+      "fact": "same-day dispatch for in-stock items before 12:00 Singapore time",
+      "expected": true,
+      "got": false,
+      "correct": false
+    },
+    {
+      "probe": "unrelated-answer",
+      "fact": "same-day dispatch for in-stock items before 12:00 Singapore time",
+      "expected": false,
+      "got": false,
+      "correct": true
+    },
+    {
+      "probe": "perturbed-number",
+      "fact": "same-day dispatch for in-stock items before 12:00 Singapore time",
+      "expected": false,
+      "got": false,
+      "correct": true
+    },
+    {
+      "probe": "verbose-wrong",
+      "fact": "same-day dispatch for in-stock items before 12:00 Singapore time",
+      "expected": false,
+      "got": false,
+      "correct": true
+    },
+    {
+      "probe": "positive",
+      "fact": "within 7 days of delivery",
+      "expected": true,
+      "got": true,
+      "correct": true
+    },
+    {
+      "probe": "unrelated-answer",
+      "fact": "within 7 days of delivery",
+      "expected": false,
+      "got": false,
+      "correct": true
+    },
+    {
+      "probe": "perturbed-number",
+      "fact": "within 7 days of delivery",
+      "expected": false,
+      "got": false,
+      "correct": true
+    },
+    {
+      "probe": "verbose-wrong",
+      "fact": "within 7 days of delivery",
+      "expected": false,
+      "got": false,
+      "correct": true
+    },
+    {
+      "probe": "positive",
+      "fact": "Order value from USD 5,000 up to USD 14,999.99: 5% discount",
+      "expected": true,
+      "got": false,
+      "correct": false
+    },
+    {
+      "probe": "unrelated-answer",
+      "fact": "Order value from USD 5,000 up to USD 14,999.99: 5% discount",
+      "expected": false,
+      "got": false,
+      "correct": true
+    },
+    {
+      "probe": "perturbed-number",
+      "fact": "Order value from USD 5,000 up to USD 14,999.99: 5% discount",
+      "expected": false,
+      "got": false,
+      "correct": true
+    },
+    {
+      "probe": "verbose-wrong",
+      "fact": "Order value from USD 5,000 up to USD 14,999.99: 5% discount",
+      "expected": false,
+      "got": false,
+      "correct": true
+    }
+  ]
+}

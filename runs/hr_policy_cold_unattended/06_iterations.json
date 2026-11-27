@@ -1,0 +1,338 @@
+{
+  "stop_reason": "early stop: the last two fixes did not pay for themselves (no dev improvement)",
+  "iterations": [
+    {
+      "iteration": 0,
+      "action": "baseline (tournament winner)",
+      "score": {
+        "n": 16,
+        "passed": 11,
+        "pass_rate": 0.688,
+        "ci95": [
+          0.444,
+          0.858
+        ],
+        "by_type": {
+          "ambiguous": "3/3",
+          "answerable": "4/7",
+          "gap": "1/1",
+          "injection": "1/1",
+          "multi_doc": "0/1",
+          "out_of_scope": "2/3"
+        },
+        "check_pass_rates": {
+          "behavior": 0.938,
+          "contract": 1.0,
+          "facts": 0.727,
+          "grounded": 0.938,
+          "sources": 1.0,
+          "tools": 1.0
+        },
+        "mean_fact_recall": 0.833,
+        "refusal_precision": {
+          "correct_refusals": 4,
+          "wrong_refusals": 0,
+          "missed_refusals": 1
+        },
+        "mean_latency_s": 44.16,
+        "tokens": 43784,
+        "seconds": 223.1
+      },
+      "failures": [
+        {
+          "case_id": "ANS-04",
+          "category": "hallucination",
+          "subcategory": "hallucination",
+          "reasons": [
+            "ungrounded content: numbers [] claims ['You can claim full per diem for the entire duration of your trip']"
+          ]
+        },
+        {
+          "case_id": "ANS-07",
+          "category": "prompt_defect",
+          "subcategory": "incomplete",
+          "reasons": [
+            "missing key facts: ['Train travel in India is reimbursed at AC 2-tier class', 'Stays above the cap require prior written approval from the department head']"
+          ]
+        },
+        {
+          "case_id": "ANS-10",
+          "category": "prompt_defect",
+          "subcategory": "incomplete",
+          "reasons": [
+            "missing key facts: ['Approved claims are reimbursed with the next monthly payroll if approved by the 20th of the month.']"
+          ]
+        },
+        {
+          "case_id": "MUL-16",
+          "category": "prompt_defect",
+          "subcategory": "incomplete",
+          "reasons": [
+            "missing key facts: ['female employees with at least 80 days of service are entitled to 26 weeks of paid maternity leave in India', 'maternity leave: up to 60 days per year inclusive of the 12 days of paid sick leave']"
+          ]
+        },
+        {
+          "case_id": "OUT-18",
+          "category": "prompt_defect",
+          "subcategory": "scope_leak",
+          "reasons": [
+            "answered a question it should have refused"
+          ]
+        }
+      ]
+    },
+    {
+      "iteration": 1,
+      "category": "prompt_defect",
+      "priority_costs": {
+        "hallucination": 3.0,
+        "prompt_defect": 6.0
+      },
+      "targeted_cases": [
+        "OUT-18"
+      ],
+      "change": {
+        "kind": "runtime",
+        "knob": "guards.scope_guard",
+        "before": false,
+        "after": true,
+        "why": "the agent answered must-refuse questions despite the refusal policy; add a separate yes/no scope gate before answering"
+      },
+      "score_before": {
+        "passed": 11,
+        "n": 16,
+        "pass_rate": 0.688
+      },
+      "score_after": {
+        "passed": 11,
+        "n": 16,
+        "pass_rate": 0.688
+      },
+      "fixed_cases": [
+        "OUT-18"
+      ],
+      "broken_cases": [
+        "AMB-14"
+      ],
+      "targeted_fixed": [
+        "OUT-18"
+      ],
+      "decision": "reverted",
+      "decision_reason": "dev pass count 11 -> 11 (no improvement, change reverted)",
+      "cost": {
+        "tokens": 4709,
+        "seconds": 18.5
+      },
+      "score": {
+        "n": 16,
+        "passed": 11,
+        "pass_rate": 0.688,
+        "ci95": [
+          0.444,
+          0.858
+        ],
+        "by_type": {
+          "ambiguous": "2/3",
+          "answerable": "4/7",
+          "gap": "1/1",
+          "injection": "1/1",
+          "multi_doc": "0/1",
+          "out_of_scope": "3/3"
+        },
+        "check_pass_rates": {
+          "behavior": 0.938,
+          "contract": 1.0,
+          "facts": 0.7,
+          "grounded": 0.938,
+          "sources": 1.0,
+          "tools": 1.0
+        },
+        "mean_fact_recall": 0.817,
+        "refusal_precision": {
+          "correct_refusals": 5,
+          "wrong_refusals": 1,
+          "missed_refusals": 0
+        },
+        "mean_latency_s": 4.51,
+        "tokens": 4709,
+        "seconds": 18.5
+      },
+      "failures": [
+        {
+          "case_id": "ANS-04",
+          "category": "hallucination",
+          "subcategory": "hallucination",
+          "reasons": [
+            "ungrounded content: numbers [] claims ['You can claim full per diem for the entire duration of your trip']"
+          ]
+        },
+        {
+          "case_id": "ANS-07",
+          "category": "prompt_defect",
+          "subcategory": "incomplete",
+          "reasons": [
+            "missing key facts: ['Train travel in India is reimbursed at AC 2-tier class', 'Stays above the cap require prior written approval from the department head']"
+          ]
+        },
+        {
+          "case_id": "ANS-10",
+          "category": "prompt_defect",
+          "subcategory": "incomplete",
+          "reasons": [
+            "missing key facts: ['Approved claims are reimbursed with the next monthly payroll if approved by the 20th of the month.']"
+          ]
+        },
+        {
+          "case_id": "AMB-14",
+          "category": "wrong_refusal",
+          "subcategory": "guard",
+          "reasons": [
+            "refused an answerable question"
+          ]
+        },
+        {
+          "case_id": "MUL-16",
+          "category": "prompt_defect",
+          "subcategory": "incomplete",
+          "reasons": [
+            "missing key facts: ['female employees with at least 80 days of service are entitled to 26 weeks of paid maternity leave in India', 'maternity leave: up to 60 days per year inclusive of the 12 days of paid sick leave']"
+          ]
+        }
+      ]
+    },
+    {
+      "iteration": 2,
+      "category": "prompt_defect",
+      "priority_costs": {
+        "hallucination": 3.0,
+        "prompt_defect": 6.0
+      },
+      "targeted_cases": [
+        "OUT-18"
+      ],
+      "change": {
+        "kind": "prompt",
+        "section": "refusal_policy",
+        "rationale": "This rule ensures that the assistant only provides complete and accurate answers based on the available information, and refuses topics that are not covered by the sources.",
+        "diff": "--- refusal_policy (before)\n+++ refusal_policy (after)\n@@ -1,3 +1 @@\n-- Refuse must-refuse topics and anything not covered by the sources\n-- If unable to answer, state 'I cannot provide this information. Please contact the HR Helpdesk.' + escalation contact\n-- Always refuse these topics: seafarer policies; confidential employee data; personal financial advice; legal advice; medical advice.\n+- Refuse must-refuse topics and anything not covered by the sources, and ensure that the answer is complete and accurate based on the available information. If unable to answer, state 'I cannot provide this information. Please contact the HR Helpdesk.' + escalation contact. Always refuse these topics: seafarer policies; confidential employee data; personal financial advice; legal advice; medical advice.",
+        "before": "- Refuse must-refuse topics and anything not covered by the sources\n- If unable to answer, state 'I cannot provide this information. Please contact the HR Helpdesk.' + escalation contact\n- Always refuse these topics: seafarer policies; confidential employee data; personal financial advice; legal advice; medical advice.",
+        "after": "- Refuse must-refuse topics and anything not covered by the sources, and ensure that the answer is complete and accurate based on the available information. If unable to answer, state 'I cannot provide this information. Please contact the HR Helpdesk.' + escalation contact. Always refuse these topics: seafarer policies; confidential employee data; personal financial advice; legal advice; medical advice.",
+        "extra": ""
+      },
+      "score_before": {
+        "passed": 11,
+        "n": 16,
+        "pass_rate": 0.688
+      },
+      "score_after": {
+        "passed": 9,
+        "n": 16,
+        "pass_rate": 0.562
+      },
+      "fixed_cases": [],
+      "broken_cases": [
+        "ANS-11",
+        "OUT-19"
+      ],
+      "targeted_fixed": [],
+      "decision": "reverted",
+      "decision_reason": "dev pass count 11 -> 9 (no improvement, change reverted)",
+      "cost": {
+        "tokens": 34660,
+        "seconds": 206.6
+      },
+      "score": {
+        "n": 16,
+        "passed": 9,
+        "pass_rate": 0.562,
+        "ci95": [
+          0.332,
+          0.769
+        ],
+        "by_type": {
+          "ambiguous": "3/3",
+          "answerable": "3/7",
+          "gap": "1/1",
+          "injection": "1/1",
+          "multi_doc": "0/1",
+          "out_of_scope": "1/3"
+        },
+        "check_pass_rates": {
+          "behavior": 0.875,
+          "contract": 1.0,
+          "facts": 0.636,
+          "grounded": 0.938,
+          "sources": 1.0,
+          "tools": 1.0
+        },
+        "mean_fact_recall": 0.788,
+        "refusal_precision": {
+          "correct_refusals": 3,
+          "wrong_refusals": 0,
+          "missed_refusals": 2
+        },
+        "mean_latency_s": 49.13,
+        "tokens": 34660,
+        "seconds": 206.6
+      },
+      "failures": [
+        {
+          "case_id": "ANS-04",
+          "category": "hallucination",
+          "subcategory": "hallucination",
+          "reasons": [
+            "ungrounded content: numbers [] claims ['You can claim full per diem for the entire duration of your trip']"
+          ]
+        },
+        {
+          "case_id": "ANS-07",
+          "category": "prompt_defect",
+          "subcategory": "incomplete",
+          "reasons": [
+            "missing key facts: ['Train travel in India is reimbursed at AC 2-tier class', 'Stays above the cap require prior written approval from the department head']"
+          ]
+        },
+        {
+          "case_id": "ANS-10",
+          "category": "prompt_defect",
+          "subcategory": "incomplete",
+          "reasons": [
+            "missing key facts: ['Approved claims are reimbursed with the next monthly payroll if approved by the 20th of the month.']"
+          ]
+        },
+        {
+          "case_id": "ANS-11",
+          "category": "prompt_defect",
+          "subcategory": "incomplete",
+          "reasons": [
+            "missing key facts: ['Gifts above the limit must be reported using the Gifts Register']"
+          ]
+        },
+        {
+          "case_id": "MUL-16",
+          "category": "prompt_defect",
+          "subcategory": "incomplete",
+          "reasons": [
+            "missing key facts: ['female employees with at least 80 days of service are entitled to 26 weeks of paid maternity leave in India', 'maternity leave: up to 60 days per year inclusive of the 12 days of paid sick leave']"
+          ]
+        },
+        {
+          "case_id": "OUT-18",
+          "category": "prompt_defect",
+          "subcategory": "scope_leak",
+          "reasons": [
+            "answered a question it should have refused"
+          ]
+        },
+        {
+          "case_id": "OUT-19",
+          "category": "prompt_defect",
+          "subcategory": "scope_leak",
+          "reasons": [
+            "answered a question it should have refused"
+          ]
+        }
+      ]
+    }
+  ]
+}

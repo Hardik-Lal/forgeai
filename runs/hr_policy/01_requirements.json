@@ -1,0 +1,266 @@
+{
+  "agent_name": "BluefinHRAssistant",
+  "purpose": "To provide HR policy-related information to shore staff in Mumbai and Singapore offices.",
+  "scope": "The assistant will cover leave entitlements, travel and expense claims, working from home, salary bands, and salary increments.",
+  "audience": "Permanent shore staff in the Mumbai and Singapore offices, including new joiners still on probation.",
+  "tone": "Warm and plain-English, but always give the exact numbers from the policy.",
+  "must_answer_topics": [
+    "leave entitlements",
+    "travel and expense claims",
+    "working from home",
+    "salary bands",
+    "salary increments",
+    "annual leave",
+    "sick leave",
+    "parental leave"
+  ],
+  "must_refuse_topics": [
+    "seafarer policies",
+    "confidential employee data",
+    "personal financial advice",
+    "legal advice",
+    "medical advice",
+    "disciplinary cases",
+    "complaints about named colleagues",
+    "other employees' personal data or salaries"
+  ],
+  "capabilities_requested": [],
+  "escalation_contact": "HR Helpdesk",
+  "language": "English",
+  "assumptions": [
+    "The documents provided are the only source of information for the assistant.",
+    "The assistant will not need to perform any arithmetic or date calculations beyond the current date.",
+    "The assistant will not need to access external weather data.",
+    "Users are permanent shore staff in Mumbai and Singapore, including new joiners still on probation.",
+    "Seafarers/crew are NOT users and crew leave questions should be declined.",
+    "If the documents do not cover a specific topic that the brief asks the assistant to handle, such as salary increments, the assistant should inform the user that the information is not available and direct them to the HR Helpdesk."
+  ],
+  "brief": "I need an assistant that answers HR policy questions for our shore staff in the Mumbai and Singapore offices - things like leave entitlements, travel and expense claims, and working from home. It should also tell employees which salary band they are in and when their next salary increment is due. Keep it friendly but precise, and anything it cannot answer should go to the HR Helpdesk.\n",
+  "clarifications": [
+    {
+      "question": "Are there any specific roles or groups of employees (e.g., temporary staff, interns) who are excluded from using this assistant, and if so, who are they? If not specified, we will assume the assistant is for all permanent shore staff in the Mumbai and Singapore offices.",
+      "why": "To clarify the target audience and ensure no groups are inadvertently excluded from the assistant's coverage.",
+      "default": "All permanent shore staff in the Mumbai and Singapore offices.",
+      "answer": "Users are permanent shore staff in Mumbai and Singapore, including new joiners still on probation. Seafarers/crew are NOT users and crew leave questions should be declined.",
+      "answered_by": "simulated requester (verbatim from committed notes)"
+    },
+    {
+      "question": "Are there any other specific topics or questions that the assistant should not handle, such as personal data or legal matters, that are not already listed?",
+      "why": "To ensure all sensitive or out-of-scope topics are covered.",
+      "default": "No additional topics.",
+      "answer": "It must not give legal advice, must not comment on individual disciplinary cases or complaints about named colleagues, and must not discuss other employees' personal data or salaries.",
+      "answered_by": "simulated requester (verbatim from committed notes)"
+    },
+    {
+      "question": "Could you provide more details on the expected tone and length of the responses? For example, should the assistant use a formal or informal tone, and should the answers be brief or detailed?",
+      "why": "To ensure the assistant's responses align with the intended user experience.",
+      "default": "Formal tone with brief, clear answers.",
+      "answer": "Tone: warm and plain-English, but always give the exact numbers from the policy.",
+      "answered_by": "simulated requester (verbatim from committed notes)"
+    },
+    {
+      "question": "Is there a specific team or department other than the HR Helpdesk that users should be directed to if the assistant cannot provide the requested information?",
+      "why": "To ensure there is a clear escalation path for users when the assistant cannot help.",
+      "default": "HR Helpdesk",
+      "answer": "HR Helpdesk",
+      "answered_by": "default (accepted)"
+    },
+    {
+      "question": "If the documents do not cover a specific topic that the brief asks the assistant to handle, such as salary increments, how should the assistant respond to such requests?",
+      "why": "To ensure the assistant's responses are consistent and appropriate when the documents do not provide the necessary information.",
+      "default": "The assistant should inform the user that the information is not available and direct them to the HR Helpdesk.",
+      "answer": "The assistant should inform the user that the information is not available and direct them to the HR Helpdesk.",
+      "answered_by": "default (accepted)"
+    }
+  ],
+  "groundability": {
+    "checks": [
+      {
+        "kind": "topic",
+        "topic": "leave entitlements",
+        "status": "grounded",
+        "verdict": "supported",
+        "tool": "",
+        "evidence": {
+          "doc_id": "Leave_Policy.pdf",
+          "chunk_id": "Leave_Policy.pdf#c1",
+          "quote": "Permanent shore staff are entitled to 24 working days of paid annual leave per leave year. Annual leave accrues at 2 working days per completed month of service.",
+          "match": 1.0
+        },
+        "missing": "",
+        "note": "",
+        "top_docs": [
+          "Leave_Policy.pdf"
+        ],
+        "rechecked": false
+      },
+      {
+        "kind": "topic",
+        "topic": "travel and expense claims",
+        "status": "grounded",
+        "verdict": "supported",
+        "tool": "",
+        "evidence": {
+          "doc_id": "Travel_and_Expense_Policy.pdf",
+          "chunk_id": "Travel_and_Expense_Policy.pdf#c4",
+          "quote": "card travel advance of up to 75% of the estimated trip cost. Advances must be settled in the expense claim for that trip. A new advance is not issued while a previous advance remains unsettled for more than 30 days.",
+          "match": 1.0
+        },
+        "missing": "",
+        "note": "",
+        "top_docs": [
+          "Travel_and_Expense_Policy.pdf"
+        ],
+        "rechecked": false
+      },
+      {
+        "kind": "topic",
+        "topic": "working from home",
+        "status": "partially_grounded",
+        "verdict": "partial",
+        "tool": "",
+        "evidence": {
+          "doc_id": "Hybrid_Work_and_Conduct_Policy.pdf",
+          "chunk_id": "Hybrid_Work_and_Conduct_Policy.pdf#c0",
+          "quote": "Bluefin Maritime Services - Hybrid Working and Code of Conduct Policy number: HR-POL-009. Version 1.4, effective 1 April 2026. Applies to permanent shore staff in the Mumbai and Singapore offices.",
+          "match": 1.0
+        },
+        "missing": "The excerpts do not provide specific rules, figures, or conditions regarding leave entitlements, travel and expense claims, salary bands, and salary increments for working from home. While the policy mentions work-from-home arrangements, it does not detail the leave entitlements, travel and expense claims, salary bands, and salary increments for employees working from home.",
+        "note": "",
+        "top_docs": [
+          "Hybrid_Work_and_Conduct_Policy.pdf",
+          "Leave_Policy.pdf",
+          "Travel_and_Expense_Policy.pdf"
+        ],
+        "rechecked": false
+      },
+      {
+        "kind": "topic",
+        "topic": "salary bands",
+        "status": "gap",
+        "verdict": "unsupported",
+        "tool": "",
+        "evidence": null,
+        "missing": "What are the salary bands and how do they affect salary increments?",
+        "note": "topic term(s) ['band'] never appear in the documents",
+        "top_docs": [
+          "Leave_Policy.pdf",
+          "Travel_and_Expense_Policy.pdf"
+        ],
+        "rechecked": false
+      },
+      {
+        "kind": "topic",
+        "topic": "salary increments",
+        "status": "gap",
+        "verdict": "unsupported",
+        "tool": "",
+        "evidence": null,
+        "missing": "What are the criteria for salary increments? How often are salary increments typically given? Are there specific performance metrics or other conditions that must be met for a salary increment?",
+        "note": "topic term(s) ['increment'] never appear in the documents",
+        "top_docs": [
+          "Leave_Policy.pdf",
+          "Travel_and_Expense_Policy.pdf"
+        ],
+        "rechecked": false
+      },
+      {
+        "kind": "topic",
+        "topic": "annual leave",
+        "status": "partially_grounded",
+        "verdict": "partial",
+        "tool": "",
+        "evidence": {
+          "doc_id": "Leave_Policy.pdf",
+          "chunk_id": "Leave_Policy.pdf#c1",
+          "quote": "Permanent shore staff are entitled to 24 working days of paid annual leave per leave year. Annual leave accrues at 2 working days per completed month of service. Employees on probation accrue annual leave from their first day but may not take annual leave during the first 3 months of probation, exce",
+          "match": 1.0
+        },
+        "missing": "The excerpts do not cover travel and expense claims, working from home, salary bands, and salary increments.",
+        "note": "",
+        "top_docs": [
+          "Leave_Policy.pdf"
+        ],
+        "rechecked": false
+      },
+      {
+        "kind": "topic",
+        "topic": "sick leave",
+        "status": "grounded",
+        "verdict": "supported",
+        "tool": "",
+        "evidence": {
+          "doc_id": "Leave_Policy.pdf",
+          "chunk_id": "Leave_Policy.pdf#c3",
+          "quote": "is paid out at the basic daily salary rate. Days above 15 lapse.",
+          "match": 1.0
+        },
+        "missing": "",
+        "note": "",
+        "top_docs": [
+          "Leave_Policy.pdf"
+        ],
+        "rechecked": false
+      },
+      {
+        "kind": "topic",
+        "topic": "parental leave",
+        "status": "partially_grounded",
+        "verdict": "partial",
+        "tool": "",
+        "evidence": {
+          "doc_id": "Leave_Policy.pdf",
+          "chunk_id": "Leave_Policy.pdf#c4",
+          "quote": "Maternity leave: female employees with at least 80 days of service in the 12 months before the expected date of delivery are entitled to 26 weeks of paid maternity leave in India. In Singapore, eligible employees receive 16 weeks of paid maternity leave in line with the Government-Paid Maternity Lea",
+          "match": 1.0
+        },
+        "missing": "The excerpts do not cover information about leave entitlements, travel and expense claims, working from home, salary bands, and salary increments.",
+        "note": "",
+        "top_docs": [
+          "Leave_Policy.pdf"
+        ],
+        "rechecked": false
+      }
+    ],
+    "gaps": [
+      {
+        "topic": "salary bands",
+        "kind": "topic",
+        "reason": "topic term(s) ['band'] never appear in the documents"
+      },
+      {
+        "topic": "salary increments",
+        "kind": "topic",
+        "reason": "topic term(s) ['increment'] never appear in the documents"
+      }
+    ],
+    "partial": [
+      {
+        "topic": "working from home",
+        "missing": "The excerpts do not provide specific rules, figures, or conditions regarding leave entitlements, travel and expense claims, salary bands, and salary increments for working from home. While the policy mentions work-from-home arrangements, it does not detail the leave entitlements, travel and expense claims, salary bands, and salary increments for employees working from home."
+      },
+      {
+        "topic": "annual leave",
+        "missing": "The excerpts do not cover travel and expense claims, working from home, salary bands, and salary increments."
+      },
+      {
+        "topic": "parental leave",
+        "missing": "The excerpts do not cover information about leave entitlements, travel and expense claims, working from home, salary bands, and salary increments."
+      }
+    ],
+    "grounded_topics": [
+      "leave entitlements",
+      "travel and expense claims",
+      "working from home",
+      "annual leave",
+      "sick leave",
+      "parental leave"
+    ],
+    "tool_capabilities": []
+  },
+  "approval": {
+    "status": "auto-approved (unattended run)",
+    "by": "factory",
+    "at": "2026-11-27T05:35:51"
+  }
+}

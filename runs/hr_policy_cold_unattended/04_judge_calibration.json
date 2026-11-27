@@ -1,0 +1,155 @@
+{
+  "n_probes": 20,
+  "accuracy": 0.8,
+  "trusted": true,
+  "by_probe_type": {
+    "positive": "2/6",
+    "unrelated-answer": "6/6",
+    "verbose-wrong": "6/6",
+    "perturbed-number": "2/2"
+  },
+  "judge_model": "qwen2.5:7b-instruct",
+  "note": "LLM verdicts enabled",
+  "probes": [
+    {
+      "probe": "positive",
+      "fact": "5 working days of paid bereavement leave",
+      "expected": true,
+      "got": true,
+      "correct": true
+    },
+    {
+      "probe": "unrelated-answer",
+      "fact": "5 working days of paid bereavement leave",
+      "expected": false,
+      "got": false,
+      "correct": true
+    },
+    {
+      "probe": "verbose-wrong",
+      "fact": "5 working days of paid bereavement leave",
+      "expected": false,
+      "got": false,
+      "correct": true
+    },
+    {
+      "probe": "positive",
+      "fact": "Anything above $150 must be declined or declared to Compliance within 5 working days",
+      "expected": true,
+      "got": true,
+      "correct": true
+    },
+    {
+      "probe": "unrelated-answer",
+      "fact": "Anything above $150 must be declined or declared to Compliance within 5 working days",
+      "expected": false,
+      "got": false,
+      "correct": true
+    },
+    {
+      "probe": "perturbed-number",
+      "fact": "Anything above $150 must be declined or declared to Compliance within 5 working days",
+      "expected": false,
+      "got": false,
+      "correct": true
+    },
+    {
+      "probe": "verbose-wrong",
+      "fact": "Anything above $150 must be declined or declared to Compliance within 5 working days",
+      "expected": false,
+      "got": false,
+      "correct": true
+    },
+    {
+      "probe": "positive",
+      "fact": "Train travel in India is reimbursed at AC 2-tier class",
+      "expected": true,
+      "got": false,
+      "correct": false
+    },
+    {
+      "probe": "unrelated-answer",
+      "fact": "Train travel in India is reimbursed at AC 2-tier class",
+      "expected": false,
+      "got": false,
+      "correct": true
+    },
+    {
+      "probe": "verbose-wrong",
+      "fact": "Train travel in India is reimbursed at AC 2-tier class",
+      "expected": false,
+      "got": false,
+      "correct": true
+    },
+    {
+      "probe": "positive",
+      "fact": "INR 500 or SGD 10",
+      "expected": true,
+      "got": false,
+      "correct": false
+    },
+    {
+      "probe": "unrelated-answer",
+      "fact": "INR 500 or SGD 10",
+      "expected": false,
+      "got": false,
+      "correct": true
+    },
+    {
+      "probe": "perturbed-number",
+      "fact": "INR 500 or SGD 10",
+      "expected": false,
+      "got": false,
+      "correct": true
+    },
+    {
+      "probe": "verbose-wrong",
+      "fact": "INR 500 or SGD 10",
+      "expected": false,
+      "got": false,
+      "correct": true
+    },
+    {
+      "probe": "positive",
+      "fact": "Annual leave accrues at 2 working days per completed month of service",
+      "expected": true,
+      "got": false,
+      "correct": false
+    },
+    {
+      "probe": "unrelated-answer",
+      "fact": "Annual leave accrues at 2 working days per completed month of service",
+      "expected": false,
+      "got": false,
+      "correct": true
+    },
+    {
+      "probe": "verbose-wrong",
+      "fact": "Annual leave accrues at 2 working days per completed month of service",
+      "expected": false,
+      "got": false,
+      "correct": true
+    },
+    {
+      "probe": "positive",
+      "fact": "Employees in grade M3 and above may travel in premium economy.",
+      "expected": true,
+      "got": false,
+      "correct": false
+    },
+    {
+      "probe": "unrelated-answer",
+      "fact": "Employees in grade M3 and above may travel in premium economy.",
+      "expected": false,
+      "got": false,
+      "correct": true
+    },
+    {
+      "probe": "verbose-wrong",
+      "fact": "Employees in grade M3 and above may travel in premium economy.",
+      "expected": false,
+      "got": false,
+      "correct": true
+    }
+  ]
+}

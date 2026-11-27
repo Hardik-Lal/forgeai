@@ -1,0 +1,349 @@
+{
+  "agent_name": "BluefinPartsAI",
+  "purpose": "To assist technical superintendents in managing ship spare parts procurement.",
+  "scope": "The assistant will handle queries related to part numbers, compatible equipment, pricing, stock levels, order totals, delivery dates, and supplier terms, while also providing live freight rates and port congestion information.",
+  "audience": "Technical superintendents, purchasing team.",
+  "tone": "Professional and concise, with clear and direct answers.",
+  "must_answer_topics": [
+    "part numbers",
+    "compatible equipment",
+    "pricing",
+    "stock levels",
+    "order totals",
+    "delivery dates",
+    "supplier terms",
+    "freight rates"
+  ],
+  "must_refuse_topics": [
+    "confidential internal information",
+    "personal data",
+    "financial reports",
+    "legal advice",
+    "vessel repairs",
+    "engineering procedures",
+    "supplier contract terms"
+  ],
+  "capabilities_requested": [
+    "calculate order totals",
+    "determine delivery dates",
+    "provide live freight rates"
+  ],
+  "escalation_contact": "Procurement Team",
+  "language": "English",
+  "assumptions": [
+    "The documents provided cover the necessary information for the assistant to function as requested.",
+    "The assistant will use the provided documents to answer questions, with the ability to cite sources."
+  ],
+  "brief": "Our technical superintendents need an assistant for ship spare parts procurement. It should find parts in our spares catalogue (part number, compatible equipment, price, stock and which warehouse), work out order totals including supplier discounts, tell them by what date a part would be ready if ordered today, and explain our suppliers' terms and our internal approval limits. It should also give live freight rates and port congestion for delivery to the vessel. Answers must be exact and cite the source.\n",
+  "clarifications": [
+    {
+      "question": "Are there any specific staff groups that should not use this assistant, such as administrative or financial personnel? If not, we will assume that all technical superintendents, purchasing team, and fleet managers can use it.",
+      "why": "To clarify the target audience and ensure no groups are inadvertently excluded.",
+      "default": "All technical superintendents, purchasing team, and fleet managers can use the assistant.",
+      "answer": "Users are technical superintendents and the purchasing team; they are engineers, so be concise and technical.",
+      "answered_by": "simulated requester (verbatim from committed notes)"
+    },
+    {
+      "question": "Can the assistant decline to answer questions about confidential internal information, personal data, financial reports, or legal advice? If so, please confirm these as topics the assistant must refuse.",
+      "why": "To ensure the assistant adheres to confidentiality and data protection standards.",
+      "default": "The assistant will decline to answer questions about confidential internal information, personal data, financial reports, and legal advice.",
+      "answer": "It must not give advice on vessel repairs or engineering procedures (that is for the makers' manuals and the chief engineer), and must not reveal supplier contract terms to anyone outside Bluefin.",
+      "answered_by": "simulated requester (verbatim from committed notes)"
+    },
+    {
+      "question": "Should the assistant's responses be brief and to the point, or can they be more detailed? If no specific length is required, we will assume concise answers.",
+      "why": "To ensure the assistant's responses are appropriate for the audience and context.",
+      "default": "The assistant's responses should be brief and to the point.",
+      "answer": "Users are technical superintendents and the purchasing team; they are engineers, so be concise and technical.",
+      "answered_by": "simulated requester (verbatim from committed notes)"
+    },
+    {
+      "question": "If the assistant cannot answer a question, should users be directed to the Procurement Team or another department? If not specified, we will assume users should be directed to the Procurement Team.",
+      "why": "To ensure users know where to seek further assistance if needed.",
+      "default": "Users should be directed to the Procurement Team if the assistant cannot answer their question.",
+      "answer": "It must not place orders, approve purchase orders, or negotiate with suppliers - only inform. Escalation: the purchasing team at purchasing@bluefin-maritime.example.",
+      "answered_by": "simulated requester (verbatim from committed notes)"
+    },
+    {
+      "question": "If the documents do not contain the information needed to answer a question, should the assistant provide an estimated value or state that the information is not available? If not specified, we will assume the assistant should state that the information is not available.",
+      "why": "To ensure the assistant handles unsupported requests appropriately.",
+      "default": "The assistant should state that the information is not available if the documents do not contain the necessary details.",
+      "answer": "Users are technical superintendents and the purchasing team; they are engineers, so be concise and technical. It must not place orders, approve purchase orders, or negotiate with suppliers - only inform.",
+      "answered_by": "simulated requester (verbatim from committed notes)"
+    }
+  ],
+  "groundability": {
+    "checks": [
+      {
+        "kind": "topic",
+        "topic": "part numbers",
+        "status": "grounded",
+        "verdict": "supported",
+        "tool": "",
+        "evidence": {
+          "doc_id": "spares_catalogue.csv",
+          "chunk_id": "spares_catalogue.csv#r42",
+          "quote": "part_no: BMS-AP-1294; description: Lifebuoy light with battery; category: Safety; compatible_equipment: SOLAS; supplier: AsiaPac Marine; unit_price_usd: 64.25; stock_qty: 2; warehouse: Mumbai; lead_time_days: 6; min_order_qty: 1; critical_spare: yes",
+          "match": 1.0
+        },
+        "missing": "",
+        "note": "",
+        "top_docs": [
+          "Procurement_Procedure.pdf",
+          "Supplier_Terms_AsiaPac_Marine.pdf"
+        ],
+        "rechecked": false
+      },
+      {
+        "kind": "topic",
+        "topic": "compatible equipment",
+        "status": "partially_grounded",
+        "verdict": "partial",
+        "tool": "",
+        "evidence": {
+          "doc_id": "spares_catalogue.csv",
+          "chunk_id": "spares_catalogue.csv#r34",
+          "quote": "part_no: BMS-AP-1238; description: Butterfly valve DN200 seat; category: Valves; compatible_equipment: Generic DN200; supplier: AsiaPac Marine; unit_price_usd: 161.99; stock_qty: 12; warehouse: Mumbai; lead_time_days: 12; min_order_qty: 5; critical_spare: no",
+          "match": 1.0
+        },
+        "missing": "What is the compatible equipment for other parts numbers not covered in the provided excerpts?",
+        "note": "",
+        "top_docs": [
+          "Procurement_Procedure.pdf",
+          "Supplier_Terms_AsiaPac_Marine.pdf"
+        ],
+        "rechecked": false
+      },
+      {
+        "kind": "topic",
+        "topic": "pricing",
+        "status": "grounded",
+        "verdict": "supported",
+        "tool": "",
+        "evidence": {
+          "doc_id": "Supplier_Terms_AsiaPac_Marine.pdf",
+          "chunk_id": "Supplier_Terms_AsiaPac_Marine.pdf#c0",
+          "quote": "AsiaPac Marine Supply Pte Ltd - Supply Conditions for: Bluefin Maritime Services Agreement reference: APMS/BMS/26-02. Effective 1 March 2026 for 24 months. AsiaPac Marine supplies pumps, valves, deck machinery spares, safety equipment and consumables from warehouses in Singapore and Mumbai. 1. Prici",
+          "match": 1.0
+        },
+        "missing": "",
+        "note": "",
+        "top_docs": [
+          "Procurement_Procedure.pdf",
+          "Supplier_Terms_AsiaPac_Marine.pdf"
+        ],
+        "rechecked": false
+      },
+      {
+        "kind": "topic",
+        "topic": "stock levels",
+        "status": "partially_grounded",
+        "verdict": "partial",
+        "tool": "",
+        "evidence": {
+          "doc_id": "spares_catalogue.csv",
+          "chunk_id": "spares_catalogue.csv#r42",
+          "quote": "part_no: BMS-AP-1294; description: Lifebuoy light with battery; category: Safety; supplier: AsiaPac Marine; unit_price_usd: 64.25; stock_qty: 2; warehouse: Mumbai; lead_time_days: 6; min_order_qty: 1; critical_spare: yes",
+          "match": 1.0
+        },
+        "missing": "The excerpts do not provide specific information about stock levels for all part numbers, pricing details for urgent orders, or the exact lead times for all suppliers. Additionally, there is no information on how to check stock levels or the process for placing orders.",
+        "note": "",
+        "top_docs": [
+          "Procurement_Procedure.pdf",
+          "Supplier_Terms_AsiaPac_Marine.pdf",
+          "spares_catalogue.csv"
+        ],
+        "rechecked": false
+      },
+      {
+        "kind": "topic",
+        "topic": "order totals",
+        "status": "partially_grounded",
+        "verdict": "partial",
+        "tool": "",
+        "evidence": {
+          "doc_id": "Procurement_Procedure.pdf",
+          "chunk_id": "Procurement_Procedure.pdf#c0",
+          "quote": "Bluefin Maritime Services - Spare Parts Procurement: Procedure Procedure number: TEC-PRO-021. Revision 5, effective 1 January 2026. Applies to technical superintendents, the purchasing team and fleet managers ordering spares for managed vessels.",
+          "match": 1.0
+        },
+        "missing": "The excerpts do not provide specific information on how to calculate or retrieve order totals. Users would ask about the total cost of an order, including discounts and delivery charges.",
+        "note": "",
+        "top_docs": [
+          "Procurement_Procedure.pdf",
+          "Supplier_Terms_AsiaPac_Marine.pdf"
+        ],
+        "rechecked": false
+      },
+      {
+        "kind": "topic",
+        "topic": "delivery dates",
+        "status": "partially_grounded",
+        "verdict": "partial",
+        "tool": "",
+        "evidence": {
+          "doc_id": "Supplier_Terms_AsiaPac_Marine.pdf",
+          "chunk_id": "Supplier_Terms_AsiaPac_Marine.pdf#c0",
+          "quote": "3. Lead time: Catalo",
+          "match": 1.0
+        },
+        "missing": "What are the delivery dates for specific part numbers? Are there any exceptions or delays for certain parts or urgent orders?",
+        "note": "",
+        "top_docs": [
+          "Procurement_Procedure.pdf",
+          "Supplier_Terms_AsiaPac_Marine.pdf"
+        ],
+        "rechecked": false
+      },
+      {
+        "kind": "topic",
+        "topic": "supplier terms",
+        "status": "partially_grounded",
+        "verdict": "partial",
+        "tool": "",
+        "evidence": {
+          "doc_id": "Supplier_Terms_AsiaPac_Marine.pdf",
+          "chunk_id": "Supplier_Terms_AsiaPac_Marine.pdf#c0",
+          "quote": "AsiaPac Marine Supply Pte Ltd - Supply Conditions for: Bluefin Maritime Services Agreement reference: APMS/BMS/26-02. Effective 1 March 2026 for 24 months. AsiaPac Marine supplies pumps, valves, deck machinery spares, safety equipment and consumables from warehouses in Singapore and Mumbai.",
+          "match": 1.0
+        },
+        "missing": "The excerpts do not provide specific information about the terms and conditions related to pricing, quantity discounts, lead times, and other supplier terms for AsiaPac Marine. While the document mentions the pricing, quantity discount, and lead time, it does not provide a comprehensive overview of the supplier terms.",
+        "note": "",
+        "top_docs": [
+          "Procurement_Procedure.pdf",
+          "Supplier_Terms_AsiaPac_Marine.pdf"
+        ],
+        "rechecked": false
+      },
+      {
+        "kind": "topic",
+        "topic": "freight rates",
+        "status": "gap",
+        "verdict": "unsupported",
+        "tool": "",
+        "evidence": null,
+        "missing": "Live freight rates and port congestion information.",
+        "note": "topic term(s) ['rate'] never appear in the documents",
+        "top_docs": [
+          "Procurement_Procedure.pdf",
+          "Supplier_Terms_AsiaPac_Marine.pdf"
+        ],
+        "rechecked": false
+      },
+      {
+        "kind": "capability",
+        "topic": "calculate order totals",
+        "status": "partially_grounded",
+        "verdict": "partial",
+        "tool": "",
+        "evidence": {
+          "doc_id": "Supplier_Terms_AsiaPac_Marine.pdf",
+          "chunk_id": "Supplier_Terms_AsiaPac_Marine.pdf#c0",
+          "quote": "AsiaPac Marine Supply Pte Ltd - Supply Conditions for: Bluefin Maritime Services Agreement reference: APMS/BMS/26-02. Effective 1 March 2026 for 24 months. 1. Pricing: Catalogue prices are in US dollars, ex-warehouse Singapore or Mumbai, excluding GST and delivery. Prices are reviewed every 6 months",
+          "match": 0.97
+        },
+        "missing": "The excerpts do not provide specific information on how to calculate the total order amount, including all applicable discounts and delivery charges. Users would ask about the total cost of an order, including the application of quantity discounts and delivery charges.",
+        "note": "",
+        "top_docs": [
+          "Procurement_Procedure.pdf",
+          "Supplier_Terms_AsiaPac_Marine.pdf"
+        ],
+        "rechecked": false
+      },
+      {
+        "kind": "capability",
+        "topic": "determine delivery dates",
+        "status": "partially_grounded",
+        "verdict": "partial",
+        "tool": "",
+        "evidence": {
+          "doc_id": "Supplier_Terms_AsiaPac_Marine.pdf",
+          "chunk_id": "Supplier_Terms_AsiaPac_Marine.pdf#c1",
+          "quote": "a port outside Singapore and Mumbai, add 5 calendar days for transit to the delivery port. Urgent orders placed before 12:00 Singapore time are dispatched the same day for in-stock items, for a flat fee of USD 250 per order.",
+          "match": 1.0
+        },
+        "missing": "Specific delivery dates for non-urgent orders, especially for parts not in stock.",
+        "note": "",
+        "top_docs": [
+          "Supplier_Terms_AsiaPac_Marine.pdf",
+          "Supplier_Terms_NordMarine.pdf"
+        ],
+        "rechecked": false
+      },
+      {
+        "kind": "capability",
+        "topic": "provide live freight rates",
+        "status": "gap",
+        "verdict": "unsupported",
+        "tool": "",
+        "evidence": null,
+        "missing": "What are the live freight rates to different ports?",
+        "note": "topic term(s) ['live', 'rate', 'provide'] never appear in the documents",
+        "top_docs": [
+          "Procurement_Procedure.pdf",
+          "Supplier_Terms_AsiaPac_Marine.pdf"
+        ],
+        "rechecked": false
+      }
+    ],
+    "gaps": [
+      {
+        "topic": "freight rates",
+        "kind": "topic",
+        "reason": "topic term(s) ['rate'] never appear in the documents"
+      },
+      {
+        "topic": "provide live freight rates",
+        "kind": "capability",
+        "reason": "topic term(s) ['live', 'rate', 'provide'] never appear in the documents"
+      }
+    ],
+    "partial": [
+      {
+        "topic": "compatible equipment",
+        "missing": "What is the compatible equipment for other parts numbers not covered in the provided excerpts?"
+      },
+      {
+        "topic": "stock levels",
+        "missing": "The excerpts do not provide specific information about stock levels for all part numbers, pricing details for urgent orders, or the exact lead times for all suppliers. Additionally, there is no information on how to check stock levels or the process for placing orders."
+      },
+      {
+        "topic": "order totals",
+        "missing": "The excerpts do not provide specific information on how to calculate or retrieve order totals. Users would ask about the total cost of an order, including discounts and delivery charges."
+      },
+      {
+        "topic": "delivery dates",
+        "missing": "What are the delivery dates for specific part numbers? Are there any exceptions or delays for certain parts or urgent orders?"
+      },
+      {
+        "topic": "supplier terms",
+        "missing": "The excerpts do not provide specific information about the terms and conditions related to pricing, quantity discounts, lead times, and other supplier terms for AsiaPac Marine. While the document mentions the pricing, quantity discount, and lead time, it does not provide a comprehensive overview of the supplier terms."
+      },
+      {
+        "topic": "calculate order totals",
+        "missing": "The excerpts do not provide specific information on how to calculate the total order amount, including all applicable discounts and delivery charges. Users would ask about the total cost of an order, including the application of quantity discounts and delivery charges."
+      },
+      {
+        "topic": "determine delivery dates",
+        "missing": "Specific delivery dates for non-urgent orders, especially for parts not in stock."
+      }
+    ],
+    "grounded_topics": [
+      "part numbers",
+      "compatible equipment",
+      "pricing",
+      "stock levels",
+      "order totals",
+      "delivery dates",
+      "supplier terms",
+      "calculate order totals",
+      "determine delivery dates"
+    ],
+    "tool_capabilities": []
+  },
+  "approval": {
+    "status": "auto-approved (unattended run)",
+    "by": "factory",
+    "at": "2026-11-27T05:35:52"
+  }
+}

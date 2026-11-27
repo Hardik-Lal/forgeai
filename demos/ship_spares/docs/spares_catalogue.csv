@@ -1,0 +1,50 @@
+part_no,description,category,compatible_equipment,supplier,unit_price_usd,stock_qty,warehouse,lead_time_days,min_order_qty,critical_spare
+BMS-NM-1007,Fuel injection valve nozzle,Main engine,MAN B&W S50MC-C,NordMarine,396.68,10,Rotterdam,18,1,yes
+BMS-NM-1014,Fuel injection valve nozzle,Main engine,MAN B&W S50MC-C,NordMarine,470.61,0,Singapore,13,1,yes
+BMS-NM-1021,Exhaust valve spindle,Main engine,MAN B&W S50MC-C,NordMarine,5452.73,12,Rotterdam,45,1,yes
+BMS-NM-1028,Piston ring set (one cylinder),Main engine,MAN B&W S50MC-C,NordMarine,2194.43,12,Rotterdam,29,1,yes
+BMS-NM-1035,Piston ring set (one cylinder),Main engine,MAN B&W S50MC-C,NordMarine,2489.68,40,Singapore,33,1,yes
+BMS-NM-1042,Cylinder liner O-ring kit,Main engine,MAN B&W S50MC-C,NordMarine,174.36,40,Rotterdam,14,1,no
+BMS-NM-1049,Cylinder liner O-ring kit,Main engine,MAN B&W S50MC-C,NordMarine,140.18,0,Singapore,8,1,no
+BMS-NM-1056,Fuel pump plunger and barrel,Main engine,Wartsila RT-flex50,NordMarine,7161.79,8,Rotterdam,35,1,yes
+BMS-NM-1063,Starting air valve overhaul kit,Main engine,Wartsila RT-flex50,NordMarine,853.69,20,Rotterdam,21,1,no
+BMS-NM-1070,Starting air valve overhaul kit,Main engine,Wartsila RT-flex50,NordMarine,819.85,2,Singapore,20,1,no
+BMS-NM-1077,Turbocharger cartridge,Auxiliary engine,Yanmar 6EY18,NordMarine,9227.57,4,Singapore,42,1,yes
+BMS-NM-1084,Connecting rod bearing shell pair,Auxiliary engine,Yanmar 6EY18,NordMarine,419.96,10,Singapore,20,1,yes
+BMS-NM-1091,Connecting rod bearing shell pair,Auxiliary engine,Yanmar 6EY18,NordMarine,318.40,4,Mumbai,11,1,yes
+BMS-NM-1098,Fuel filter element,Auxiliary engine,Yanmar 6EY18,NordMarine,37.48,3,Singapore,5,2,no
+BMS-NM-1105,Fuel filter element,Auxiliary engine,Yanmar 6EY18,NordMarine,30.40,20,Mumbai,7,1,no
+BMS-NM-1112,Cylinder head gasket,Auxiliary engine,Daihatsu 6DK-20,NordMarine,96.11,25,Singapore,12,1,no
+BMS-NM-1119,Cylinder head gasket,Auxiliary engine,Daihatsu 6DK-20,NordMarine,115.75,0,Mumbai,13,5,no
+BMS-NM-1126,Lube oil cooler tube stack,Auxiliary engine,Daihatsu 6DK-20,NordMarine,2743.56,0,Singapore,38,1,no
+BMS-NM-1133,Alfa Laval bowl disc set,Purifier,Alfa Laval MOPX 207,NordMarine,1803.82,40,Rotterdam,27,1,no
+BMS-NM-1140,Alfa Laval bowl disc set,Purifier,Alfa Laval MOPX 207,NordMarine,1860.10,8,Singapore,20,1,no
+BMS-NM-1147,Purifier major service kit,Purifier,Alfa Laval MOPX 207,NordMarine,1220.86,3,Rotterdam,16,1,no
+BMS-NM-1154,Purifier major service kit,Purifier,Alfa Laval MOPX 207,NordMarine,1097.40,8,Singapore,18,1,no
+BMS-NM-1161,Air compressor valve plate assembly,Compressor,Sperre HV2/200,NordMarine,588.78,0,Rotterdam,21,1,no
+BMS-NM-1168,Air compressor valve plate assembly,Compressor,Sperre HV2/200,NordMarine,527.15,1,Singapore,12,1,no
+BMS-NM-1175,Compressor piston ring set,Compressor,Sperre HV2/200,NordMarine,296.65,10,Rotterdam,20,1,no
+BMS-NM-1182,Compressor piston ring set,Compressor,Sperre HV2/200,NordMarine,274.56,6,Singapore,17,1,no
+BMS-AP-1189,Centrifugal pump mechanical seal,Pumps,Shinko SVS 200,AsiaPac Marine,387.50,2,Singapore,8,1,yes
+BMS-AP-1196,Centrifugal pump mechanical seal,Pumps,Shinko SVS 200,AsiaPac Marine,407.73,8,Mumbai,14,1,yes
+BMS-AP-1203,Pump impeller bronze,Pumps,Shinko SVS 200,AsiaPac Marine,1385.81,10,Singapore,22,1,no
+BMS-AP-1210,Ballast pump wear ring set,Pumps,Naniwa FSA-250,AsiaPac Marine,327.18,20,Singapore,14,5,no
+BMS-AP-1217,Ballast pump wear ring set,Pumps,Naniwa FSA-250,AsiaPac Marine,355.98,10,Mumbai,21,2,no
+BMS-AP-1224,Fire pump shaft sleeve,Pumps,Naniwa FSA-250,AsiaPac Marine,244.39,6,Singapore,16,1,yes
+BMS-AP-1231,Butterfly valve DN200 seat,Valves,Generic DN200,AsiaPac Marine,173.55,3,Singapore,5,1,no
+BMS-AP-1238,Butterfly valve DN200 seat,Valves,Generic DN200,AsiaPac Marine,161.99,12,Mumbai,12,5,no
+BMS-AP-1245,Globe valve DN50 cast steel,Valves,Generic DN50,AsiaPac Marine,311.97,4,Singapore,10,1,no
+BMS-AP-1252,Globe valve DN50 cast steel,Valves,Generic DN50,AsiaPac Marine,286.19,8,Mumbai,14,2,no
+BMS-AP-1259,Safety relief valve 10 bar,Valves,Generic,AsiaPac Marine,418.10,0,Singapore,14,1,yes
+BMS-AP-1266,Mooring winch brake lining set,Deck machinery,Kawasaki KWM-30,AsiaPac Marine,865.50,40,Singapore,22,1,no
+BMS-AP-1273,Hydraulic motor seal kit,Deck machinery,Kawasaki KWM-30,AsiaPac Marine,195.08,25,Singapore,18,1,no
+BMS-AP-1280,Hydraulic motor seal kit,Deck machinery,Kawasaki KWM-30,AsiaPac Marine,196.23,1,Mumbai,16,2,no
+BMS-AP-1287,Lifebuoy light with battery,Safety,SOLAS,AsiaPac Marine,78.50,20,Singapore,5,2,yes
+BMS-AP-1294,Lifebuoy light with battery,Safety,SOLAS,AsiaPac Marine,64.25,2,Mumbai,6,1,yes
+BMS-AP-1301,Parachute rocket flare,Safety,SOLAS,AsiaPac Marine,110.73,0,Singapore,8,1,yes
+BMS-AP-1308,SCBA cylinder 6.8 L carbon,Safety,Drager PSS,AsiaPac Marine,775.73,10,Singapore,15,1,yes
+BMS-AP-1315,Gasket sheet compressed fibre 1.5 mm,Consumables,General,AsiaPac Marine,83.30,2,Singapore,4,1,no
+BMS-AP-1322,Gasket sheet compressed fibre 1.5 mm,Consumables,General,AsiaPac Marine,83.63,40,Mumbai,7,1,no
+BMS-AP-1329,Engine room cleaning rags (10 kg),Consumables,General,AsiaPac Marine,26.02,20,Singapore,4,1,no
+BMS-AP-1336,Engine room cleaning rags (10 kg),Consumables,General,AsiaPac Marine,18.06,20,Mumbai,5,1,no
+BMS-AP-1343,Generator AVR module,Electrical,Taiyo FE-series,AsiaPac Marine,1545.61,8,Singapore,39,1,yes

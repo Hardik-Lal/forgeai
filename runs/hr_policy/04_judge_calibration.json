@@ -1,0 +1,162 @@
+{
+  "n_probes": 21,
+  "accuracy": 0.81,
+  "trusted": true,
+  "by_probe_type": {
+    "positive": "2/6",
+    "unrelated-answer": "6/6",
+    "verbose-wrong": "6/6",
+    "perturbed-number": "3/3"
+  },
+  "judge_model": "qwen2.5:7b-instruct",
+  "note": "LLM verdicts enabled",
+  "probes": [
+    {
+      "probe": "positive",
+      "fact": "5 working days of paid bereavement leave",
+      "expected": true,
+      "got": true,
+      "correct": true
+    },
+    {
+      "probe": "unrelated-answer",
+      "fact": "5 working days of paid bereavement leave",
+      "expected": false,
+      "got": false,
+      "correct": true
+    },
+    {
+      "probe": "verbose-wrong",
+      "fact": "5 working days of paid bereavement leave",
+      "expected": false,
+      "got": false,
+      "correct": true
+    },
+    {
+      "probe": "positive",
+      "fact": "Anything above these limits must be declined or declared to Compliance within 5 working days using the Gifts Register.",
+      "expected": true,
+      "got": true,
+      "correct": true
+    },
+    {
+      "probe": "unrelated-answer",
+      "fact": "Anything above these limits must be declined or declared to Compliance within 5 working days using the Gifts Register.",
+      "expected": false,
+      "got": false,
+      "correct": true
+    },
+    {
+      "probe": "verbose-wrong",
+      "fact": "Anything above these limits must be declined or declared to Compliance within 5 working days using the Gifts Register.",
+      "expected": false,
+      "got": false,
+      "correct": true
+    },
+    {
+      "probe": "positive",
+      "fact": "personal car use is reimbursed at INR 12 per kilometre in India",
+      "expected": true,
+      "got": false,
+      "correct": false
+    },
+    {
+      "probe": "unrelated-answer",
+      "fact": "personal car use is reimbursed at INR 12 per kilometre in India",
+      "expected": false,
+      "got": false,
+      "correct": true
+    },
+    {
+      "probe": "perturbed-number",
+      "fact": "personal car use is reimbursed at INR 12 per kilometre in India",
+      "expected": false,
+      "got": false,
+      "correct": true
+    },
+    {
+      "probe": "verbose-wrong",
+      "fact": "personal car use is reimbursed at INR 12 per kilometre in India",
+      "expected": false,
+      "got": false,
+      "correct": true
+    },
+    {
+      "probe": "positive",
+      "fact": "INR 500 or SGD 10",
+      "expected": true,
+      "got": false,
+      "correct": false
+    },
+    {
+      "probe": "unrelated-answer",
+      "fact": "INR 500 or SGD 10",
+      "expected": false,
+      "got": false,
+      "correct": true
+    },
+    {
+      "probe": "perturbed-number",
+      "fact": "INR 500 or SGD 10",
+      "expected": false,
+      "got": false,
+      "correct": true
+    },
+    {
+      "probe": "verbose-wrong",
+      "fact": "INR 500 or SGD 10",
+      "expected": false,
+      "got": false,
+      "correct": true
+    },
+    {
+      "probe": "positive",
+      "fact": "Annual leave of more than 3 consecutive working days must be applied for in the HRMS portal at least 14 calendar days in advance.",
+      "expected": true,
+      "got": false,
+      "correct": false
+    },
+    {
+      "probe": "unrelated-answer",
+      "fact": "Annual leave of more than 3 consecutive working days must be applied for in the HRMS portal at least 14 calendar days in advance.",
+      "expected": false,
+      "got": false,
+      "correct": true
+    },
+    {
+      "probe": "perturbed-number",
+      "fact": "Annual leave of more than 3 consecutive working days must be applied for in the HRMS portal at least 14 calendar days in advance.",
+      "expected": false,
+      "got": false,
+      "correct": true
+    },
+    {
+      "probe": "verbose-wrong",
+      "fact": "Annual leave of more than 3 consecutive working days must be applied for in the HRMS portal at least 14 calendar days in advance.",
+      "expected": false,
+      "got": false,
+      "correct": true
+    },
+    {
+      "probe": "positive",
+      "fact": "Employees in grade M3 and above may travel in premium economy.",
+      "expected": true,
+      "got": false,
+      "correct": false
+    },
+    {
+      "probe": "unrelated-answer",
+      "fact": "Employees in grade M3 and above may travel in premium economy.",
+      "expected": false,
+      "got": false,
+      "correct": true
+    },
+    {
+      "probe": "verbose-wrong",
+      "fact": "Employees in grade M3 and above may travel in premium economy.",
+      "expected": false,
+      "got": false,
+      "correct": true
+    }
+  ]
+}

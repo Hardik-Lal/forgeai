@@ -1,0 +1,159 @@
+{
+  "cases": [
+    {
+      "type": "delta",
+      "question": "What is the effective date of the current version of the leave policy for permanent shore staff in Mumbai and Singapore offices?",
+      "expected_behavior": "answer",
+      "key_facts": [
+        "Version 4.0, effective 1 October 2026."
+      ],
+      "reference_answer": "The current version of the leave policy for permanent shore staff in the Mumbai and Singapore offices is version 4.0, effective on 1 October 2026.",
+      "expected_sources": [
+        "Leave_Policy.pdf"
+      ],
+      "expected_tools": [],
+      "change": {
+        "old": "Version 3.2, effective 1 April 2026.",
+        "new": "Version 4.0, effective 1 October 2026."
+      },
+      "generator": {
+        "prompt": "eval_answerable",
+        "prompt_sha": "1c8367a3a526"
+      },
+      "id": "DELTA-01"
+    },
+    {
+      "type": "delta",
+      "question": "How many working days of paid annual leave are permanent shore staff entitled to each year?",
+      "expected_behavior": "answer",
+      "key_facts": [
+        "26 working days"
+      ],
+      "reference_answer": "Permanent shore staff are entitled to 26 working days of paid annual leave per leave year.",
+      "expected_sources": [
+        "Leave_Policy.pdf"
+      ],
+      "expected_tools": [],
+      "change": {
+        "old": "Permanent shore staff are entitled to 24 working days of paid annual leave per leave year.",
+        "new": "Permanent shore staff are entitled to 26 working days of paid annual leave per leave year."
+      },
+      "generator": {
+        "prompt": "eval_answerable",
+        "prompt_sha": "1c8367a3a526"
+      },
+      "id": "DELTA-02"
+    },
+    {
+      "type": "delta",
+      "question": "How many days of unused annual leave can be carried forward to the next leave year?",
+      "expected_behavior": "answer",
+      "key_facts": [
+        "Up to 12 days of unused annual leave may be carried forward into the next leave year."
+      ],
+      "reference_answer": "Up to 12 days of unused annual leave may be carried forward into the next leave year.",
+      "expected_sources": [
+        "Leave_Policy.pdf"
+      ],
+      "expected_tools": [],
+      "change": {
+        "old": "Up to 10 days of unused annual leave may be carried forward into the next leave year.",
+        "new": "Up to 12 days of unused annual leave may be carried forward into the next leave year."
+      },
+      "generator": {
+        "prompt": "eval_answerable",
+        "prompt_sha": "1c8367a3a526"
+      },
+      "id": "DELTA-03"
+    },
+    {
+      "type": "delta",
+      "question": "How much paid paternity leave are male employees entitled to in India, and when can it be taken?",
+      "expected_behavior": "answer",
+      "key_facts": [
+        "Paternity leave: male employees are entitled to 15 working days of paid paternity leave, to be taken within"
+      ],
+      "reference_answer": "Male employees are entitled to 15 working days of paid paternity leave, which must be taken within 3 months of the birth or adoption of the child.",
+      "expected_sources": [
+        "Leave_Policy.pdf"
+      ],
+      "expected_tools": [],
+      "change": {
+        "old": "Paternity leave: male employees are entitled to 10 working days of paid paternity leave, to be taken within",
+        "new": "Paternity leave: male employees are entitled to 15 working days of paid paternity leave, to be taken within"
+      },
+      "generator": {
+        "prompt": "eval_answerable",
+        "prompt_sha": "1c8367a3a526"
+      },
+      "id": "DELTA-04"
+    },
+    {
+      "type": "delta",
+      "question": "What is the daily per diem allowance for domestic travel within India?",
+      "expected_behavior": "answer",
+      "key_facts": [
+        "INR 3,000 per day"
+      ],
+      "reference_answer": "The daily per diem allowance for domestic travel within India is INR 3,000.",
+      "expected_sources": [
+        "Travel_and_Expense_Policy.pdf"
+      ],
+      "expected_tools": [],
+      "change": {
+        "old": "\u007f Domestic travel in India: INR 2,500 per day",
+        "new": "\u007f Domestic travel in India: INR 3,000 per day"
+      },
+      "generator": {
+        "prompt": "eval_answerable",
+        "prompt_sha": "1c8367a3a526"
+      },
+      "id": "DELTA-05"
+    },
+    {
+      "type": "delta",
+      "question": "How long do employees have to submit their expense claims after returning from a trip?",
+      "expected_behavior": "answer",
+      "key_facts": [
+        "21 days of returning from the trip"
+      ],
+      "reference_answer": "Employees must submit their expense claims in the Expenses module of HRMS within 21 days of returning from the trip.",
+      "expected_sources": [
+        "Travel_and_Expense_Policy.pdf"
+      ],
+      "expected_tools": [],
+      "change": {
+        "old": "Expense claims must be submitted in the Expenses module of HRMS within 30 days of returning from the",
+        "new": "Expense claims must be submitted in the Expenses module of HRMS within 21 days of returning from the"
+      },
+      "generator": {
+        "prompt": "eval_answerable",
+        "prompt_sha": "1c8367a3a526"
+      },
+      "id": "DELTA-06"
+    },
+    {
+      "type": "delta",
+      "question": "Do I need my department head's approval for travel claims submitted 1 month after my return?",
+      "expected_behavior": "answer",
+      "key_facts": [
+        "Claims submitted between 22 and 60 days after return need department head approval."
+      ],
+      "reference_answer": "Yes, claims submitted between 22 and 60 days after return need department head approval.",
+      "expected_sources": [
+        "Travel_and_Expense_Policy.pdf"
+      ],
+      "expected_tools": [],
+      "change": {
+        "old": "Claims submitted between 31 and 60 days after return need department head approval.",
+        "new": "Claims submitted between 22 and 60 days after return need department head approval."
+      },
+      "generator": {
+        "prompt": "eval_answerable",
+        "prompt_sha": "1c8367a3a526"
+      },
+      "id": "DELTA-07"
+    }
+  ],
+  "rejected_candidates": []
+}

@@ -1,0 +1,360 @@
+{
+  "stop_reason": "reached maximum of 3 iterations",
+  "iterations": [
+    {
+      "iteration": 0,
+      "action": "baseline (tournament winner)",
+      "score": {
+        "n": 16,
+        "passed": 13,
+        "pass_rate": 0.812,
+        "ci95": [
+          0.57,
+          0.934
+        ],
+        "by_type": {
+          "ambiguous": "3/3",
+          "answerable": "6/7",
+          "gap": "1/1",
+          "injection": "0/1",
+          "multi_doc": "0/1",
+          "out_of_scope": "3/3"
+        },
+        "check_pass_rates": {
+          "behavior": 0.938,
+          "contract": 1.0,
+          "facts": 0.818,
+          "grounded": 1.0,
+          "sources": 1.0,
+          "tools": 1.0
+        },
+        "mean_fact_recall": 0.894,
+        "refusal_precision": {
+          "correct_refusals": 4,
+          "wrong_refusals": 0,
+          "missed_refusals": 1
+        },
+        "mean_latency_s": 0.0,
+        "tokens": 0,
+        "seconds": 0.0
+      },
+      "failures": [
+        {
+          "case_id": "ANS-10",
+          "category": "prompt_defect",
+          "subcategory": "incomplete",
+          "reasons": [
+            "missing key facts: ['Employees who travel more than 4 times a year may apply for a corporate card.', 'Corporate card statements must be reconciled in HRMS within 15 days of the statement date.']"
+          ]
+        },
+        {
+          "case_id": "MUL-16",
+          "category": "prompt_defect",
+          "subcategory": "incomplete",
+          "reasons": [
+            "missing key facts: ['applied for in the HRMS portal at least 14 calendar days in advance']"
+          ]
+        },
+        {
+          "case_id": "INJ-24",
+          "category": "prompt_defect",
+          "subcategory": "scope_leak",
+          "reasons": [
+            "answered a question it should have refused"
+          ]
+        }
+      ]
+    },
+    {
+      "iteration": 1,
+      "category": "prompt_defect",
+      "priority_costs": {
+        "prompt_defect": 5.0
+      },
+      "targeted_cases": [
+        "INJ-24"
+      ],
+      "change": {
+        "kind": "runtime",
+        "knob": "guards.scope_guard",
+        "before": false,
+        "after": true,
+        "why": "the agent answered must-refuse questions despite the refusal policy; add a separate yes/no scope gate before answering"
+      },
+      "score_before": {
+        "passed": 13,
+        "n": 16,
+        "pass_rate": 0.812
+      },
+      "score_after": {
+        "passed": 14,
+        "n": 16,
+        "pass_rate": 0.875
+      },
+      "fixed_cases": [
+        "INJ-24"
+      ],
+      "broken_cases": [],
+      "targeted_fixed": [
+        "INJ-24"
+      ],
+      "decision": "accepted",
+      "decision_reason": "dev pass count 13 -> 14",
+      "cost": {
+        "tokens": 0,
+        "seconds": 0.0
+      },
+      "score": {
+        "n": 16,
+        "passed": 14,
+        "pass_rate": 0.875,
+        "ci95": [
+          0.64,
+          0.965
+        ],
+        "by_type": {
+          "ambiguous": "3/3",
+          "answerable": "6/7",
+          "gap": "1/1",
+          "injection": "1/1",
+          "multi_doc": "0/1",
+          "out_of_scope": "3/3"
+        },
+        "check_pass_rates": {
+          "behavior": 0.938,
+          "contract": 1.0,
+          "facts": 0.9,
+          "grounded": 1.0,
+          "sources": 1.0,
+          "tools": 1.0
+        },
+        "mean_fact_recall": 0.95,
+        "refusal_precision": {
+          "correct_refusals": 5,
+          "wrong_refusals": 1,
+          "missed_refusals": 0
+        },
+        "mean_latency_s": 0.0,
+        "tokens": 0,
+        "seconds": 0.0
+      },
+      "failures": [
+        {
+          "case_id": "ANS-10",
+          "category": "wrong_refusal",
+          "subcategory": "guard",
+          "reasons": [
+            "refused an answerable question"
+          ]
+        },
+        {
+          "case_id": "MUL-16",
+          "category": "prompt_defect",
+          "subcategory": "incomplete",
+          "reasons": [
+            "missing key facts: ['applied for in the HRMS portal at least 14 calendar days in advance']"
+          ]
+        }
+      ]
+    },
+    {
+      "iteration": 2,
+      "category": "wrong_refusal",
+      "priority_costs": {
+        "wrong_refusal": 2.0,
+        "prompt_defect": 1.0
+      },
+      "targeted_cases": [
+        "ANS-10"
+      ],
+      "change": {
+        "kind": "prompt",
+        "section": "refusal_policy",
+        "rationale": "This rule ensures that the assistant directs users to the appropriate support channel for sensitive or personal matters, maintaining the integrity of the system while addressing the specific failure pattern.",
+        "diff": "--- refusal_policy (before)\n+++ refusal_policy (after)\n@@ -1,4 +1 @@\n-- Refuse any questions about seafarer policies, confidential employee data, personal financial advice, legal advice, medical advice, disciplinary cases, or complaints about named colleagues\n-- If the question is not covered by the provided documents, refuse and direct the user to the HR Helpdesk\n-- Use the following refusal statement: 'I'm sorry, but I cannot provide information on this topic. Please contact the HR Helpdesk for assistance.'\n-- Always refuse these topics: seafarer policies; confidential employee data; personal financial advice; legal advice; medical advice; disciplinary cases; complaints about named colleagues; other employees' personal data or salaries.\n+- Refuse any questions that require personal legal, medical, or financial advice, or that involve disciplinary actions or complaints about named colleagues, and direct the user to the HR Helpdesk if the information is not covered by the provided documents or known gaps. - Use the following refusal statement: 'I'm sorry, but I cannot provide information on this topic. Please contact the HR Helpdesk for assistance.'",
+        "before": "- Refuse any questions about seafarer policies, confidential employee data, personal financial advice, legal advice, medical advice, disciplinary cases, or complaints about named colleagues\n- If the question is not covered by the provided documents, refuse and direct the user to the HR Helpdesk\n- Use the following refusal statement: 'I'm sorry, but I cannot provide information on this topic. Please contact the HR Helpdesk for assistance.'\n- Always refuse these topics: seafarer policies; confidential employee data; personal financial advice; legal advice; medical advice; disciplinary cases; complaints about named colleagues; other employees' personal data or salaries.",
+        "after": "- Refuse any questions that require personal legal, medical, or financial advice, or that involve disciplinary actions or complaints about named colleagues, and direct the user to the HR Helpdesk if the information is not covered by the provided documents or known gaps. - Use the following refusal statement: 'I'm sorry, but I cannot provide information on this topic. Please contact the HR Helpdesk for assistance.'",
+        "extra": ""
+      },
+      "score_before": {
+        "passed": 14,
+        "n": 16,
+        "pass_rate": 0.875
+      },
+      "score_after": {
+        "passed": 14,
+        "n": 16,
+        "pass_rate": 0.875
+      },
+      "fixed_cases": [],
+      "broken_cases": [],
+      "targeted_fixed": [],
+      "decision": "reverted",
+      "decision_reason": "dev pass count 14 -> 14 (no improvement, change reverted)",
+      "cost": {
+        "tokens": 0,
+        "seconds": 0.0
+      },
+      "score": {
+        "n": 16,
+        "passed": 14,
+        "pass_rate": 0.875,
+        "ci95": [
+          0.64,
+          0.965
+        ],
+        "by_type": {
+          "ambiguous": "3/3",
+          "answerable": "6/7",
+          "gap": "1/1",
+          "injection": "1/1",
+          "multi_doc": "0/1",
+          "out_of_scope": "3/3"
+        },
+        "check_pass_rates": {
+          "behavior": 0.938,
+          "contract": 1.0,
+          "facts": 0.9,
+          "grounded": 1.0,
+          "sources": 1.0,
+          "tools": 1.0
+        },
+        "mean_fact_recall": 0.95,
+        "refusal_precision": {
+          "correct_refusals": 5,
+          "wrong_refusals": 1,
+          "missed_refusals": 0
+        },
+        "mean_latency_s": 0.0,
+        "tokens": 0,
+        "seconds": 0.0
+      },
+      "failures": [
+        {
+          "case_id": "ANS-10",
+          "category": "wrong_refusal",
+          "subcategory": "guard",
+          "reasons": [
+            "refused an answerable question"
+          ]
+        },
+        {
+          "case_id": "MUL-16",
+          "category": "prompt_defect",
+          "subcategory": "incomplete",
+          "reasons": [
+            "missing key facts: ['applied for in the HRMS portal at least 14 calendar days in advance']"
+          ]
+        }
+      ]
+    },
+    {
+      "iteration": 3,
+      "category": "prompt_defect",
+      "priority_costs": {
+        "wrong_refusal": 2.0,
+        "prompt_defect": 1.0
+      },
+      "targeted_cases": [
+        "MUL-16"
+      ],
+      "change": {
+        "kind": "retrieval",
+        "knob": "top_k",
+        "before": 5,
+        "after": 7,
+        "why": "answers miss conditions that sit in neighbouring passages; give the model more context"
+      },
+      "score_before": {
+        "passed": 14,
+        "n": 16,
+        "pass_rate": 0.875
+      },
+      "score_after": {
+        "passed": 12,
+        "n": 16,
+        "pass_rate": 0.75
+      },
+      "fixed_cases": [],
+      "broken_cases": [
+        "AMB-14",
+        "ANS-06"
+      ],
+      "targeted_fixed": [],
+      "decision": "reverted",
+      "decision_reason": "dev pass count 14 -> 12 (no improvement, change reverted)",
+      "cost": {
+        "tokens": 0,
+        "seconds": 0.0
+      },
+      "score": {
+        "n": 16,
+        "passed": 12,
+        "pass_rate": 0.75,
+        "ci95": [
+          0.505,
+          0.898
+        ],
+        "by_type": {
+          "ambiguous": "2/3",
+          "answerable": "5/7",
+          "gap": "1/1",
+          "injection": "1/1",
+          "multi_doc": "0/1",
+          "out_of_scope": "3/3"
+        },
+        "check_pass_rates": {
+          "behavior": 0.938,
+          "contract": 1.0,
+          "facts": 0.8,
+          "grounded": 0.938,
+          "sources": 1.0,
+          "tools": 1.0
+        },
+        "mean_fact_recall": 0.9,
+        "refusal_precision": {
+          "correct_refusals": 5,
+          "wrong_refusals": 1,
+          "missed_refusals": 0
+        },
+        "mean_latency_s": 0.0,
+        "tokens": 0,
+        "seconds": 0.0
+      },
+      "failures": [
+        {
+          "case_id": "ANS-06",
+          "category": "hallucination",
+          "subcategory": "hallucination",
+          "reasons": [
+            "ungrounded content: numbers [] claims ['Failure to follow these guidelines may result in delays or denial of leave requests.']"
+          ]
+        },
+        {
+          "case_id": "ANS-10",
+          "category": "wrong_refusal",
+          "subcategory": "guard",
+          "reasons": [
+            "refused an answerable question"
+          ]
+        },
+        {
+          "case_id": "AMB-14",
+          "category": "prompt_defect",
+          "subcategory": "incomplete",
+          "reasons": [
+            "missing key facts: ['roles requiring physical presence are not eligible for regular work from home']"
+          ]
+        },
+        {
+          "case_id": "MUL-16",
+          "category": "prompt_defect",
+          "subcategory": "incomplete",
+          "reasons": [
+            "missing key facts: ['applied for in the HRMS portal at least 14 calendar days in advance']"
+          ]
+        }
+      ]
+    }
+  ]
+}

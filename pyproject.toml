@@ -1,0 +1,28 @@
+[project]
+name = "forgeai"
+version = "1.0.0"
+description = "ForgeAI - the agent that builds, tests and repairs grounded agents on a small open model"
+requires-python = ">=3.10"
+dependencies = [
+    "requests>=2.31",
+    "numpy>=1.26",
+    "pypdf>=4.0",
+    "python-docx>=1.1",
+]
+
+[project.optional-dependencies]
+ui = ["streamlit>=1.36"]
+dev = ["pytest>=8.0", "reportlab>=4.0"]
+
+[project.scripts]
+forge = "forgeai.cli:main"
+
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+include = ["forgeai*"]
+
+[tool.setuptools.package-data]
+forgeai = ["prompts/*.md"]

@@ -1,0 +1,289 @@
+{
+  "stop_reason": "early stop: the last two fixes did not pay for themselves (no dev improvement)",
+  "iterations": [
+    {
+      "iteration": 0,
+      "action": "baseline (tournament winner)",
+      "score": {
+        "n": 16,
+        "passed": 13,
+        "pass_rate": 0.812,
+        "ci95": [
+          0.57,
+          0.934
+        ],
+        "by_type": {
+          "ambiguous": "2/2",
+          "answerable": "3/5",
+          "gap": "1/1",
+          "injection": "1/1",
+          "multi_doc": "1/1",
+          "out_of_scope": "3/3",
+          "tool": "2/3"
+        },
+        "check_pass_rates": {
+          "behavior": 1.0,
+          "contract": 1.0,
+          "facts": 0.727,
+          "grounded": 1.0,
+          "sources": 1.0,
+          "tools": 0.909
+        },
+        "mean_fact_recall": 0.773,
+        "refusal_precision": {
+          "correct_refusals": 5,
+          "wrong_refusals": 0,
+          "missed_refusals": 0
+        },
+        "mean_latency_s": 0.0,
+        "tokens": 0,
+        "seconds": 0.0
+      },
+      "failures": [
+        {
+          "case_id": "ANS-02",
+          "category": "prompt_defect",
+          "subcategory": "incomplete",
+          "reasons": [
+            "missing key facts: ['not eligible for volume discounts']"
+          ]
+        },
+        {
+          "case_id": "ANS-05",
+          "category": "prompt_defect",
+          "subcategory": "incomplete",
+          "reasons": [
+            "missing key facts: ['Order value from USD 5,000 up to USD 14,999.99: 5% discount', 'Discounts are not cumulative across orders and do not apply to urgent deliveries']"
+          ]
+        },
+        {
+          "case_id": "TOO-24",
+          "category": "prompt_defect",
+          "subcategory": "tool_use",
+          "reasons": [
+            "missing key facts: ['2026-12-01']",
+            "expected tool(s) ['current_date'] not called (called ['calculator'])"
+          ]
+        }
+      ]
+    },
+    {
+      "iteration": 1,
+      "category": "prompt_defect",
+      "priority_costs": {
+        "prompt_defect": 4.0
+      },
+      "targeted_cases": [
+        "TOO-24"
+      ],
+      "change": {
+        "kind": "prompt",
+        "section": "tool_rules",
+        "rationale": "Ensure the assistant calculates delivery dates accurately by using the current_date tool, addressing the issue of missing key facts and tool calls.",
+        "diff": "--- tool_rules (before)\n+++ tool_rules (after)\n@@ -1 +1 @@\n-Use the calculator [T1] for arithmetic operations and the csv_lookup [T2] for exact item details. Never claim to look up live data or perform actions. No tools are attached; never claim to look up live data or perform actions.\n+Use the calculator [T1] for arithmetic operations and the csv_lookup [T2] for exact item details. Always verify the current date and lead times using the current_date [T3] tool when calculating delivery dates. Never claim to look up live data or perform actions. No tools are attached; never claim to look up live data or perform actions.",
+        "before": "Use the calculator [T1] for arithmetic operations and the csv_lookup [T2] for exact item details. Never claim to look up live data or perform actions. No tools are attached; never claim to look up live data or perform actions.",
+        "after": "Use the calculator [T1] for arithmetic operations and the csv_lookup [T2] for exact item details. Always verify the current date and lead times using the current_date [T3] tool when calculating delivery dates. Never claim to look up live data or perform actions. No tools are attached; never claim to look up live data or perform actions.",
+        "extra": ""
+      },
+      "score_before": {
+        "passed": 13,
+        "n": 16,
+        "pass_rate": 0.812
+      },
+      "score_after": {
+        "passed": 12,
+        "n": 16,
+        "pass_rate": 0.75
+      },
+      "fixed_cases": [],
+      "broken_cases": [
+        "AMB-10"
+      ],
+      "targeted_fixed": [],
+      "decision": "reverted",
+      "decision_reason": "dev pass count 13 -> 12 (no improvement, change reverted)",
+      "cost": {
+        "tokens": 0,
+        "seconds": 0.0
+      },
+      "score": {
+        "n": 16,
+        "passed": 12,
+        "pass_rate": 0.75,
+        "ci95": [
+          0.505,
+          0.898
+        ],
+        "by_type": {
+          "ambiguous": "1/2",
+          "answerable": "3/5",
+          "gap": "1/1",
+          "injection": "1/1",
+          "multi_doc": "1/1",
+          "out_of_scope": "3/3",
+          "tool": "2/3"
+        },
+        "check_pass_rates": {
+          "behavior": 1.0,
+          "contract": 1.0,
+          "facts": 0.636,
+          "grounded": 1.0,
+          "sources": 1.0,
+          "tools": 1.0
+        },
+        "mean_fact_recall": 0.727,
+        "refusal_precision": {
+          "correct_refusals": 5,
+          "wrong_refusals": 0,
+          "missed_refusals": 0
+        },
+        "mean_latency_s": 0.0,
+        "tokens": 0,
+        "seconds": 0.0
+      },
+      "failures": [
+        {
+          "case_id": "ANS-02",
+          "category": "prompt_defect",
+          "subcategory": "incomplete",
+          "reasons": [
+            "missing key facts: ['not eligible for volume discounts']"
+          ]
+        },
+        {
+          "case_id": "ANS-05",
+          "category": "prompt_defect",
+          "subcategory": "incomplete",
+          "reasons": [
+            "missing key facts: ['Order value from USD 5,000 up to USD 14,999.99: 5% discount', 'Discounts are not cumulative across orders and do not apply to urgent deliveries']"
+          ]
+        },
+        {
+          "case_id": "AMB-10",
+          "category": "prompt_defect",
+          "subcategory": "incomplete",
+          "reasons": [
+            "missing key facts: ['Items made to order, cut-to-length items and electrical items are non-returnable.']"
+          ]
+        },
+        {
+          "case_id": "TOO-24",
+          "category": "prompt_defect",
+          "subcategory": "incomplete",
+          "reasons": [
+            "missing key facts: ['2026-12-01']"
+          ]
+        }
+      ]
+    },
+    {
+      "iteration": 2,
+      "category": "prompt_defect",
+      "priority_costs": {
+        "prompt_defect": 4.0
+      },
+      "targeted_cases": [
+        "ANS-02",
+        "ANS-05"
+      ],
+      "change": {
+        "kind": "retrieval",
+        "knob": "top_k",
+        "before": 6,
+        "after": 8,
+        "why": "answers miss conditions that sit in neighbouring passages; give the model more context"
+      },
+      "score_before": {
+        "passed": 13,
+        "n": 16,
+        "pass_rate": 0.812
+      },
+      "score_after": {
+        "passed": 12,
+        "n": 16,
+        "pass_rate": 0.75
+      },
+      "fixed_cases": [],
+      "broken_cases": [
+        "AMB-10"
+      ],
+      "targeted_fixed": [],
+      "decision": "reverted",
+      "decision_reason": "dev pass count 13 -> 12 (no improvement, change reverted)",
+      "cost": {
+        "tokens": 0,
+        "seconds": 0.0
+      },
+      "score": {
+        "n": 16,
+        "passed": 12,
+        "pass_rate": 0.75,
+        "ci95": [
+          0.505,
+          0.898
+        ],
+        "by_type": {
+          "ambiguous": "1/2",
+          "answerable": "3/5",
+          "gap": "1/1",
+          "injection": "1/1",
+          "multi_doc": "1/1",
+          "out_of_scope": "3/3",
+          "tool": "2/3"
+        },
+        "check_pass_rates": {
+          "behavior": 1.0,
+          "contract": 1.0,
+          "facts": 0.636,
+          "grounded": 1.0,
+          "sources": 1.0,
+          "tools": 0.909
+        },
+        "mean_fact_recall": 0.727,
+        "refusal_precision": {
+          "correct_refusals": 5,
+          "wrong_refusals": 0,
+          "missed_refusals": 0
+        },
+        "mean_latency_s": 0.0,
+        "tokens": 0,
+        "seconds": 0.0
+      },
+      "failures": [
+        {
+          "case_id": "ANS-02",
+          "category": "prompt_defect",
+          "subcategory": "incomplete",
+          "reasons": [
+            "missing key facts: ['not eligible for volume discounts']"
+          ]
+        },
+        {
+          "case_id": "ANS-05",
+          "category": "prompt_defect",
+          "subcategory": "incomplete",
+          "reasons": [
+            "missing key facts: ['Order value from USD 5,000 up to USD 14,999.99: 5% discount', 'Discounts are not cumulative across orders and do not apply to urgent deliveries']"
+          ]
+        },
+        {
+          "case_id": "AMB-10",
+          "category": "prompt_defect",
+          "subcategory": "incomplete",
+          "reasons": [
+            "missing key facts: ['Items made to order, cut-to-length items and electrical items are non-returnable.']"
+          ]
+        },
+        {
+          "case_id": "TOO-24",
+          "category": "prompt_defect",
+          "subcategory": "tool_use",
+          "reasons": [
+            "missing key facts: ['2026-12-01']",
+            "expected tool(s) ['current_date'] not called (called ['calculator'])"
+          ]
+        }
+      ]
+    }
+  ]
+}
