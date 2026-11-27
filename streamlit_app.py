@@ -179,7 +179,11 @@ with tab_runs:
             if fh:
                 m[2].metric("Held-out (final)", f"{fh['passed']}/{fh['n']}", f"{fh['passed'] - sc['baseline']['heldout']['passed']:+d} vs baseline")
             m[3].metric("Judge self-test", f"{sc['judge_calibration']['accuracy']:.0%}")
-            m[4].metric("Tokens", f"{sc['budget']['tokens_total']:,}")
+            b = sc["budget"]
+            if b["tokens_total"] == 0 and b.get("cache_hits"):
+                m[4].metric("Tokens", "cache replay", f"{b['cache_hits']} calls replayed", delta_color="off")
+            else:
+                m[4].metric("Tokens", f"{b['tokens_total']:,}", f"{b['wall_seconds'] / 60:.0f} min wall time", delta_color="off")
             st.line_chart({"dev pass rate": [it["dev_pass_rate"] for it in sc["iterations"]]})
         report = run / "REPORT.md"
         if report.exists():
